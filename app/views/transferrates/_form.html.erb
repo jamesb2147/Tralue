@@ -1,0 +1,41 @@
+<%= form_for @transferrate do |tr| %>
+  <% if @transferrate.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@transferrate.errors.count, "error") %> prohibited this credit card from being saved:
+      </h2>
+      <ul>
+        <% @transferrate.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p>
+  <%= tr.label :transferringprogram %></br>
+  <%= tr.text_field :transferringprogram %>
+  </p>
+  
+  <p>
+  <%= tr.label :transfereeprogram %></br>
+  <%= tr.text_field :transfereeprogram %>
+  </p>
+  
+  <p>
+  <%= tr.label :transferratio %></br>
+  <%= tr.text_field :transferratio %>
+  </p>
+  
+  <p>
+  <%= tr.label :transfernotes %></br>
+  <%= tr.text_field :transfernotes %>
+  </p>
+  
+  <p>
+  <%= cc.submit %>
+  </p>
+  
+<% end %>

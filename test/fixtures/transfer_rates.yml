@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transferringprogram: MyString
+  transfereeprogram: MyString
+  transferratio: 9.99
+  transfernotes: MyText
+
+two:
+  transferringprogram: MyString
+  transfereeprogram: MyString
+  transferratio: 9.99
+  transfernotes: MyText

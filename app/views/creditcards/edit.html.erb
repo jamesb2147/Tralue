@@ -1,0 +1,22 @@
+<h1>Tralue - Editing credit card</h1>
+
+<%= form_for :creditcard, url: creditcard_path(@creditcard), method: :patch do |cc| %>
+
+    <% if @creditcard.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@creditcard.errors.count, "error") %> prevented this credit card from being updated:
+            </h2>
+            <ul>
+                <% @creditcard.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    
+    <%= render 'form' %>
+  
+<% end %>
+
+<%= link_to 'Back', creditcards_path %>

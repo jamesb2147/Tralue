@@ -1,0 +1,22 @@
+<h1>Tralue - Editing transfer rate</h1>
+
+<%= form_for :rate, url: rate_path(@rate), method: :patch do |tr| %>
+
+    <% if @rate.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(@rate.errors.count, "error") %> prevented this credit card from being updated:
+            </h2>
+            <ul>
+                <% @rate.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    
+    <%= render 'form' %>
+  
+<% end %>
+
+<%= link_to 'Back', rates_path %>

@@ -1,0 +1,24 @@
+<h1>New credit card</h1>
+
+
+<%= form_for :creditcard, url: creditcards_path do |cc| %>
+
+  <% if @creditcard.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@creditcard.errors.count, "error") %> prohibited
+        this new credit card from being saved:
+      </h2>
+      <ul>
+        <% @creditcard.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render 'form' %>
+  
+<% end %>
+
+<%= link_to 'Back', creditcards_path %>

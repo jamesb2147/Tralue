@@ -1,0 +1,130 @@
+<%= form_for @trip do |t| %>
+  <% if @trip.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@trip.errors.count, "error") %> prohibited this credit card from being saved:
+      </h2>
+      <ul>
+        <% @trip.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p>
+  <%= t.label :name %></br>
+  <%= t.text_field :name %>
+  </p>
+  
+  <p>
+  <%= t.label :'Cost in USD' %></br>
+  <%= t.number_field :costinusd %>
+  </p>
+  
+  <!-- AA -->
+  <p>
+  <%= t.label :aacostpts %></br>
+  <%= t.number_field :aacostpts %>
+  </p>
+  
+  <p>
+  <%= t.label :aacostusd %></br>
+  <%= t.number_field :aacostusd %>
+  </p>
+  
+  <!-- BA -->
+  <p>
+  <%= t.label :bacostpts %></br>
+  <%= t.number_field :bacostpts %>
+  </p>
+  
+  <p>
+  <%= t.label :bacostusd %></br>
+  <%= t.number_field :bacostusd %>
+  </p>
+  
+  <!-- UA -->
+  <p>
+  <%= t.label :uacostpts %></br>
+  <%= t.number_field :uacostpts %>
+  </p>
+  
+  <p>
+  <%= t.label :uacostusd %></br>
+  <%= t.number_field :uacostusd %>
+  </p>
+  
+  <!-- DL -->
+  <p>
+  <%= t.label :dlcostpts %></br>
+  <%= t.number_field :dlcostpts %>
+  </p>
+  
+  <p>
+  <%= t.label :dlcostusd %></br>
+  <%= t.number_field :dlcostusd %>
+  </p>
+  
+  <!-- AS -->
+  <p>
+  <%= t.label :ascostpts %></br>
+  <%= t.number_field :ascostpts %>
+  </p>
+  
+  <p>
+  <%= t.label :ascostusd %></br>
+  <%= t.number_field :ascostusd %>
+  </p>
+  
+  <!-- NK -->
+  <p>
+  <%= t.label :nkcostpts %></br>
+  <%= t.number_field :nkcostpts %>
+  </p>
+  
+  <p>
+  <%= t.label :nkcostusd %></br>
+  <%= t.number_field :nkcostusd %>
+  </p>
+  
+  <!-- SQ -->
+  <p>
+  <%= t.label :sqcostpts %></br>
+  <%= t.number_field :sqcostpts %>
+  </p>
+  
+  <p>
+  <%= t.label :sqcostusd %></br>
+  <%= t.number_field :sqcostusd %>
+  </p>
+  
+  <!-- LA -->
+  <p>
+  <%= t.label :lacostpts %></br>
+  <%= t.number_field :lacostpts %>
+  </p>
+  
+  <p>
+  <%= t.label :lacostusd %></br>
+  <%= t.number_field :lacostusd %>
+  </p>
+  
+  <!-- AC -->
+  <p>
+  <%= t.label :accostpts %></br>
+  <%= t.number_field :accostpts %>
+  </p>
+  
+  <p>
+  <%= t.label :accostusd %></br>
+  <%= t.number_field :accostusd %>
+  </p>
+  
+  <p>
+  <%= t.submit %>
+  </p>
+  
+<% end %>

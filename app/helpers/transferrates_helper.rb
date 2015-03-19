@@ -1,0 +1,2 @@
+module TransferratesHelper
+end

@@ -1,0 +1,14 @@
+<h1>Tralue</h1>
+
+<p>
+  <strong>Title:</strong>
+  <%= @creditcard.name %>
+</p>
+ 
+<p>
+  <strong>By:</strong>
+  <%= @creditcard.issuer %>
+</p>
+
+<%= link_to 'Back', creditcards_path %>
+<%= link_to 'Edit', edit_creditcard_path(@creditcard) %>

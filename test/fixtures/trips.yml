@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  costinusd: 9.99
+  aacostpts: 1
+  aacostusd: 9.99
+  bacostpts: 1
+  bacostusd: 9.99
+  uacostpts: 1
+  uacostusd: 9.99
+  dlcostpts: 1
+  dlcostusd: 9.99
+  ascostpts: 1
+  ascostusd: 9.99
+  nkcostpts: 1
+  nkcostusd: 9.99
+  sqcostpts: 1
+  sqcostusd: 9.99
+  lacostpts: 1
+  lacostusd: 9.99
+  accostpts: 1
+  accostusd: 9.99
+
+two:
+  name: MyString
+  costinusd: 9.99
+  aacostpts: 1
+  aacostusd: 9.99
+  bacostpts: 1
+  bacostusd: 9.99
+  uacostpts: 1
+  uacostusd: 9.99
+  dlcostpts: 1
+  dlcostusd: 9.99
+  ascostpts: 1
+  ascostusd: 9.99
+  nkcostpts: 1
+  nkcostusd: 9.99
+  sqcostpts: 1
+  sqcostusd: 9.99
+  lacostpts: 1
+  lacostusd: 9.99
+  accostpts: 1
+  accostusd: 9.99

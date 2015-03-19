@@ -1,0 +1,123 @@
+<%= form_for @creditcard do |cc| %>
+  <% if @creditcard.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@creditcard.errors.count, "error") %> prohibited this credit card from being saved:
+      </h2>
+      <ul>
+        <% @creditcard.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p>
+  <%= cc.label :name %></br>
+  <%= cc.text_field :name %>
+  </p>
+  
+  <p>
+  <%= cc.label :issuer %></br>
+  <%= cc.text_field :issuer %>
+  </p>
+  
+  <p>
+  <%= cc.label :annual_fee %></br>
+  <%= cc.number_field :annual_fee %>
+  </p>
+  
+  <p>
+  <%= cc.label :fee_waived_first_year %></br>
+  <%= cc.text_field :fee_waived_first_year %>
+  </p>
+  
+  <p>
+  <%= cc.label :points_program %></br>
+  <%= cc.text_field :points_program %>
+  </p>
+  
+  <p>
+  <%= cc.label :spend_bonus %></br>
+  <%= cc.number_field :spend_bonus %>
+  </p>
+  
+  <p>
+  <%= cc.label :spend_requirement %></br>
+  <%= cc.number_field :spend_requirement %>
+  </p>
+  
+  <p>
+  <%= cc.label :time_to_reach_spend_in_months %></br>
+  <%= cc.number_field :time_to_reach_spend_in_months %>
+  </p>
+  
+  <p>
+  <%= cc.label :first_purchase_bonus %></br>
+  <%= cc.number_field :first_purchase_bonus %>
+  </p>
+  
+  <p>
+  <%= cc.label :second_year_spend_bonus %></br>
+  <%= cc.number_field :second_year_spend_bonus %>
+  </p>
+  
+  <p>
+  <%= cc.label :second_year_spend_requirement %></br>
+  <%= cc.number_field :second_year_spend_requirement %>
+  </p>
+  
+  <p>
+  <%= cc.label :second_year_time_to_reach_spend_in_months %></br>
+  <%= cc.number_field :second_year_time_to_reach_spend_in_months %>
+  </p>
+  
+  <p>
+  <%= cc.label :points_per_dollar_spend_general_spend %></br>
+  <%= cc.number_field :points_per_dollar_spent_general_spend %>
+  </p>
+  
+  <p>
+  <%= cc.label :foreign_transaction_fee %></br>
+  <%= cc.number_field :foreign_transaction_fee, :step => 0.1 %>
+  </p>
+  
+  <p>
+  <%= cc.label :chip %></br>
+  <%= cc.text_field :chip %>
+  </p>
+  
+  <p>
+  <%= cc.label :notes %></br>
+  <%= cc.text_area :notes %>
+  </p>
+  
+  <p>
+  <%= cc.label :business %></br>
+  <%= cc.text_field :business %>
+  </p>
+  
+  <p>
+  <%= cc.label :personal %></br>
+  <%= cc.text_field :personal %>
+  </p>
+  
+  <p>
+  <%= cc.label :image_index %></br>
+  <%= cc.number_field :image_index %>
+  </p>
+  
+  <p>
+  <%= cc.label :url %></br>
+  <%= cc.url_field :url %>
+  </p>
+  
+  
+  
+  <p>
+  <%= cc.submit %>
+  </p>
+  
+<% end %>

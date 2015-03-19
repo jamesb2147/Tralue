@@ -1,0 +1,24 @@
+<h1>Tralue</h1>
+
+<p>
+  <strong>Transferring program:</strong>
+  <%= @rate.transferringprogram %>
+</p>
+ 
+<p>
+  <strong>Transferee program:</strong>
+  <%= @rate.transfereeprogram %>
+</p>
+
+<p>
+  <strong>Ratio:</strong>
+  <%= @rate.transferratio %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @rate.transfernotes %>
+</p>
+
+<%= link_to 'Back', rates_path %>
+<%= link_to 'Edit', edit_rate_path(@rate) %>
