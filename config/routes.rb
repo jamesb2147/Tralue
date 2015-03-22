@@ -2,6 +2,7 @@ TralueTest2::Application.routes.draw do
   get "welcome/index"
   root 'welcome#index'
   resources :creditcards, :trips, :rates
+  resources :results
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

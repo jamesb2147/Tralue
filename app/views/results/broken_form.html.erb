@@ -1,0 +1,39 @@
+<%= form_for @result do |t| %>
+  
+  <p>
+  <%= t.label :name %></br>
+  <%= t.text_field :name %>
+  </p>
+  
+  <p>
+  <%= t.label :issuer %></br>
+  <%= t.text_field :issuer %>
+  </p>
+  
+  <p>
+  <%= t.label :'Cost in USD' %></br>
+  <%= t.number_field :costinusd %>
+  </p>
+  
+  <p>
+  <%= t.label :'Points program' %></br>
+  <%= t.text_field :points_program %>
+  </p>
+  
+  <p>
+  <%= t.label :'Spend bonus' %></br>
+  <%= t.number_field :spend_bonus %>
+  </p>
+  
+  <p>
+  <%= t.label :'Percentage of points required' %></br>
+  <%= t.number_field :percentage %>
+  </p>
+  
+
+  
+  <p>
+  <%= t.submit %>
+  </p>
+  
+<% end %>

@@ -49,6 +49,7 @@
             <td><%= link_to 'Show', trip_path(t) %></td>
             <td><%= link_to 'Edit', edit_trip_path(t) %></td>
             <td><%= link_to 'Destroy', trip_path(t), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'View recommendations', result_path(t) %></td>
         </tr>
     <% end %>
 </table>

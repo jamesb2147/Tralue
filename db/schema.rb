@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317201723) do
+ActiveRecord::Schema.define(version: 20150319211831) do
 
   create_table "creditcards", force: true do |t|
     t.string   "name"
@@ -43,6 +43,11 @@ ActiveRecord::Schema.define(version: 20150317201723) do
     t.string   "transfereeprogram"
     t.decimal  "transferratio"
     t.text     "transfernotes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "results", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

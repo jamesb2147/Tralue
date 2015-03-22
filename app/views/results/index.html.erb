@@ -1,0 +1,42 @@
+<h1>Listing results</h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Cost in USD</th>
+        <th>AA cost in points</th>
+        <th>AA cost in USD</th>
+        <th>BA pts</th>
+        <th>BA USD</th>
+        <th>UA pts</th>
+        <th>UA USD</th>
+        <th>DL pts</th>
+        <th>DL USD</th>
+        <th>AS pts</th>
+        <th>AS USD</th>
+        <th>NK pts</th>
+        <th>NK USD</th>
+        <th>SQ pts</th>
+        <th>SQ USD</th>
+        <th>LA pts</th>
+        <th>LA USD</th>
+        <th>AC pts</th>
+        <th>AC USD</th>
+    </tr>
+    <tr>
+        <% @result.arrayofcards.each do |a| %>
+            <li><%= a[0].name + a[3] %></li>
+        <% end %>
+    </tr>
+    
+    <% @results.each do |t| %>
+        <tr>
+            <td><%= t.name %></td>
+            <td><%= t.costinusd %></td>
+ 
+            <td><%= link_to 'Show', result_path(t) %></td>
+            <td><%= link_to 'Edit', edit_result_path(t) %></td>
+            <td><%= link_to 'Destroy', result_path(t), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+</table>

@@ -1,0 +1,47 @@
+
+
+<h1>Tralue - Credit card recommendations for <%= @result.name %></h1>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>By</th>
+        <th>Percent of points required for trip provided by this card</th>
+        <th>Airline issuing ticket</th>
+        <th>Points cost</th>
+        <th>Cash copay</th>
+        <th>Points to be earned</th>
+        <th>Transfer notes</th>
+        <th>Credit card notes</th>
+        <th>Annual fee</th>
+        <th>Waived first year?</th>
+        <th>Application</th>
+        <th>Value of points</th>
+        <th>CPM value</th>
+        <!-- Total value of points for this redemption (cost of airfare - annual fee - copay) * percentage-->
+        <!-- CPM value -->
+    </tr>
+    
+    <% @result.arrayofcards.each do |a| %>
+        <tr>
+            <td><%= link_to a[0].name, creditcard_path(a) %></td>
+            <td><%= a[0].issuer %></td>
+            <td><%= sprintf("%.0f", a[3]) + "%" %></td>
+            <td><%= a[2] %></td>
+            <td><%= a[4] %></td>
+            <td><%= "$" + sprintf("%.0f",a[5]) %></td>
+            <td><%= sprintf("%.0f",(a[0].first_purchase_bonus + a[0].spend_bonus + a[0].spend_requirement) * a[1].transferratio) %></td>
+            <td><%= a[1].transfernotes %></td>
+            <td><%= a[0].notes %></td>
+            <td><%= a[0].annual_fee %></td>
+            <td><%= a[0].fee_waived_first_year.to_s %></td>
+            <td><%= link_to 'Application', a[0].url %></td>
+            <td><%= sprintf("%.0f", (@result.costinusd - a[0].annual_fee - a[5]) * a[3] / 100) %></td>
+            <td><%= sprintf("%.1f", (@result.costinusd - a[0].annual_fee - a[5]) * a[3] / 100 / (a[0].first_purchase_bonus + a[0].spend_bonus + a[0].spend_requirement) * a[1].transferratio * 100) %></td>
+        </tr>
+    <% end %>
+    
+</table>
+
+<%= link_to 'Back', trips_path %>
+<%= link_to 'Home', root_path %>

@@ -1,4 +1,6 @@
 class RatesController < ApplicationController
+  http_basic_authenticate_with name: "shunter", password: "derpderp", except: [:index]
+  
   def index
     @rates = Rate.all
   end
