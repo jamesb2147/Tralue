@@ -26,7 +26,7 @@
     <% @result.arrayofcards.each do |a| %>
         <tr>
             <%= puts a["card"] %>
-            <td><%= link_to a["card"].name, creditcard_path(a["card"]) %></td>
+            <td><%= link_to a["card"].name, creditcard_path(a["card"]), class: 'btn btn-info' %></td>
             <td><%= a["card"].issuer %></td>
             <td><%= sprintf("%.0f", a["percentage"]) + "%" %></td>
             <td><%= a["points_program"] %></td>
