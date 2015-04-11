@@ -1,0 +1,101 @@
+<%= form_for(@creditcard) do |f| %>
+  <% if @creditcard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@creditcard.errors.count, "error") %> prohibited this creditcard from being saved:</h2>
+
+      <ul>
+      <% @creditcard.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :issuer %><br>
+    <%= f.text_field :issuer %>
+  </div>
+  <div class="field">
+    <%= f.label :annual_fee %><br>
+    <%= f.number_field :annual_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :fee_waived_first_year %><br>
+    <%= f.check_box :fee_waived_first_year %>
+  </div>
+  <div class="field">
+    <%= f.label :points_program %><br>
+    <%= f.text_field :points_program %>
+  </div>
+  <div class="field">
+    <%= f.label :spend_bonus %><br>
+    <%= f.number_field :spend_bonus %>
+  </div>
+  <div class="field">
+    <%= f.label :spend_requirement %><br>
+    <%= f.number_field :spend_requirement %>
+  </div>
+  <div class="field">
+    <%= f.label :time_to_reach_spend_in_months %><br>
+    <%= f.number_field :time_to_reach_spend_in_months %>
+  </div>
+  <div class="field">
+    <%= f.label :first_purchase_bonus %><br>
+    <%= f.number_field :first_purchase_bonus %>
+  </div>
+  <div class="field">
+    <%= f.label :second_year_spend_bonus %><br>
+    <%= f.number_field :second_year_spend_bonus %>
+  </div>
+  <div class="field">
+    <%= f.label :second_year_spend_requirement %><br>
+    <%= f.number_field :second_year_spend_requirement %>
+  </div>
+  <div class="field">
+    <%= f.label :second_year_time_to_reach_spend_in_months %><br>
+    <%= f.number_field :second_year_time_to_reach_spend_in_months %>
+  </div>
+  <div class="field">
+    <%= f.label :points_per_dollar_spent_general_spend %><br>
+    <%= f.text_field :points_per_dollar_spent_general_spend %>
+  </div>
+  <div class="field">
+    <%= f.label :foreign_transaction_fee %><br>
+    <%= f.text_field :foreign_transaction_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :chip %><br>
+    <%= f.text_field :chip %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+  <div class="field">
+    <%= f.label :business %><br>
+    <%= f.check_box :business %>
+  </div>
+  <div class="field">
+    <%= f.label :personal %><br>
+    <%= f.check_box :personal %>
+  </div>
+  <div class="field">
+    <%= f.label :image_index %><br>
+    <%= f.number_field :image_index %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br>
+    <%= f.text_field :country %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

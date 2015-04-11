@@ -1,0 +1,33 @@
+<h1>Listing rates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Transferringprogram</th>
+      <th>Transfereeprogram</th>
+      <th>Transferratio</th>
+      <th>Transfernotes</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rates.each do |rate| %>
+      <tr>
+        <td><%= rate.transferringprogram %></td>
+        <td><%= rate.transfereeprogram %></td>
+        <td><%= rate.transferratio %></td>
+        <td><%= rate.transfernotes %></td>
+        <td><%= link_to 'Show', rate %></td>
+        <td><%= link_to 'Edit', edit_rate_path(rate) %></td>
+        <td><%= link_to 'Destroy', rate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rate', new_rate_path %>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TralueDev1</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  
+  <div class="nav">
+  <h1><%= link_to "Tralue", root_path %></h1>
+  <ul>
+    <li>
+      <%= link_to "Trips", trips_path, class: 'btn btn-primary' %>
+    </li>
+    <% if false %>
+      <% #if logged_in?
+      %>
+      <li>
+        <%= link_to "Sign out", logout_path, method: :delete, class: 'btn btn-primary' %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "Sign in", new_user_session_path, class: 'btn btn-primary' %>
+      </li>
+      <li>
+        <%= link_to "Sign up", new_user_path, class: 'btn btn-primary' %>
+      </li>
+    <% end %>
+  </ul>
+  
+  <br class="clear" />
+  </div>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>

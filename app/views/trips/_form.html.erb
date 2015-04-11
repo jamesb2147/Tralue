@@ -1,0 +1,337 @@
+<%= form_for(@trip) do |f| %>
+  <% if @trip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+
+      <ul>
+      <% @trip.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :costinusd %><br>
+    <%= f.text_field :costinusd %>
+  </div>
+  <div class="field">
+    <%= f.label :aacostpts %><br>
+    <%= f.number_field :aacostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :aacostusd %><br>
+    <%= f.text_field :aacostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :bacostpts %><br>
+    <%= f.number_field :bacostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :bacostusd %><br>
+    <%= f.text_field :bacostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :uacostpts %><br>
+    <%= f.number_field :uacostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :uacostusd %><br>
+    <%= f.text_field :uacostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :dlcostpts %><br>
+    <%= f.number_field :dlcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :dlcostusd %><br>
+    <%= f.text_field :dlcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :ascostpts %><br>
+    <%= f.number_field :ascostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :ascostusd %><br>
+    <%= f.text_field :ascostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :nkcostpts %><br>
+    <%= f.number_field :nkcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :nkcostusd %><br>
+    <%= f.text_field :nkcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :sqcostpts %><br>
+    <%= f.number_field :sqcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :sqcostusd %><br>
+    <%= f.text_field :sqcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :lacostpts %><br>
+    <%= f.number_field :lacostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :lacostusd %><br>
+    <%= f.text_field :lacostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :accostpts %><br>
+    <%= f.number_field :accostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :accostusd %><br>
+    <%= f.text_field :accostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :cxcostpts %><br>
+    <%= f.number_field :cxcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :cxcostusd %><br>
+    <%= f.text_field :cxcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :brcostpts %><br>
+    <%= f.number_field :brcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :brcostusd %><br>
+    <%= f.text_field :brcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :eycostpts %><br>
+    <%= f.number_field :eycostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :eycostusd %><br>
+    <%= f.text_field :eycostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :afcostpts %><br>
+    <%= f.number_field :afcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :afcostusd %><br>
+    <%= f.text_field :afcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :gacostpts %><br>
+    <%= f.number_field :gacostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :gacostusd %><br>
+    <%= f.text_field :gacostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :mhcostpts %><br>
+    <%= f.number_field :mhcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :mhcostusd %><br>
+    <%= f.text_field :mhcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :qfcostpts %><br>
+    <%= f.number_field :qfcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :qfcostusd %><br>
+    <%= f.text_field :qfcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :qrcostpts %><br>
+    <%= f.number_field :qrcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :qrcostusd %><br>
+    <%= f.text_field :qrcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :tgcostpts %><br>
+    <%= f.number_field :tgcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :tgcostusd %><br>
+    <%= f.text_field :tgcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :vscostpts %><br>
+    <%= f.number_field :vscostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :vscostusd %><br>
+    <%= f.text_field :vscostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :azcostpts %><br>
+    <%= f.number_field :azcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :azcostusd %><br>
+    <%= f.text_field :azcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :nhcostpts %><br>
+    <%= f.number_field :nhcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :nhcostusd %><br>
+    <%= f.text_field :nhcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :amcostpts %><br>
+    <%= f.number_field :amcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :amcostusd %><br>
+    <%= f.text_field :amcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :lycostpts %><br>
+    <%= f.number_field :lycostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :lycostusd %><br>
+    <%= f.text_field :lycostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :hacostpts %><br>
+    <%= f.number_field :hacostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :hacostusd %><br>
+    <%= f.text_field :hacostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :ibcostpts %><br>
+    <%= f.number_field :ibcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :ibcostusd %><br>
+    <%= f.text_field :ibcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :vxcostpts %><br>
+    <%= f.number_field :vxcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :vxcostusd %><br>
+    <%= f.text_field :vxcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :abcostpts %><br>
+    <%= f.number_field :abcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :abcostusd %><br>
+    <%= f.text_field :abcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :cacostpts %><br>
+    <%= f.number_field :cacostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :cacostusd %><br>
+    <%= f.text_field :cacostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :nzcostpts %><br>
+    <%= f.number_field :nzcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :nzcostusd %><br>
+    <%= f.text_field :nzcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :ozcostpts %><br>
+    <%= f.number_field :ozcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :ozcostusd %><br>
+    <%= f.text_field :ozcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :mucostpts %><br>
+    <%= f.number_field :mucostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :mucostusd %><br>
+    <%= f.text_field :mucostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :czcostpts %><br>
+    <%= f.number_field :czcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :czcostusd %><br>
+    <%= f.text_field :czcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :ekcostpts %><br>
+    <%= f.number_field :ekcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :ekcostusd %><br>
+    <%= f.text_field :ekcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :g3costpts %><br>
+    <%= f.number_field :g3costpts %>
+  </div>
+  <div class="field">
+    <%= f.label :g3costusd %><br>
+    <%= f.text_field :g3costusd %>
+  </div>
+  <div class="field">
+    <%= f.label :hucostpts %><br>
+    <%= f.number_field :hucostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :hucostusd %><br>
+    <%= f.text_field :hucostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :jlcostpts %><br>
+    <%= f.number_field :jlcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :jlcostusd %><br>
+    <%= f.text_field :jlcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :lhcostpts %><br>
+    <%= f.number_field :lhcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :lhcostusd %><br>
+    <%= f.text_field :lhcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :svcostpts %><br>
+    <%= f.number_field :svcostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :svcostusd %><br>
+    <%= f.text_field :svcostusd %>
+  </div>
+  <div class="field">
+    <%= f.label :vacostpts %><br>
+    <%= f.number_field :vacostpts %>
+  </div>
+  <div class="field">
+    <%= f.label :vacostusd %><br>
+    <%= f.text_field :vacostusd %>
+  </div>
+  <div class="btn btn-primary">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,67 @@
+<h1>Listing creditcards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Issuer</th>
+      <th>Annual fee</th>
+      <th>Fee waived first year</th>
+      <th>Points program</th>
+      <th>Spend bonus</th>
+      <th>Spend requirement</th>
+      <th>Time to reach spend in months</th>
+      <th>First purchase bonus</th>
+      <th>Second year spend bonus</th>
+      <th>Second year spend requirement</th>
+      <th>Second year time to reach spend in months</th>
+      <th>Points per dollar spent general spend</th>
+      <th>Foreign transaction fee</th>
+      <th>Chip</th>
+      <th>Notes</th>
+      <th>Business</th>
+      <th>Personal</th>
+      <th>Image index</th>
+      <th>Url</th>
+      <th>Country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @creditcards.each do |creditcard| %>
+      <tr>
+        <td><%= creditcard.name %></td>
+        <td><%= creditcard.issuer %></td>
+        <td><%= creditcard.annual_fee %></td>
+        <td><%= creditcard.fee_waived_first_year %></td>
+        <td><%= creditcard.points_program %></td>
+        <td><%= creditcard.spend_bonus %></td>
+        <td><%= creditcard.spend_requirement %></td>
+        <td><%= creditcard.time_to_reach_spend_in_months %></td>
+        <td><%= creditcard.first_purchase_bonus %></td>
+        <td><%= creditcard.second_year_spend_bonus %></td>
+        <td><%= creditcard.second_year_spend_requirement %></td>
+        <td><%= creditcard.second_year_time_to_reach_spend_in_months %></td>
+        <td><%= creditcard.points_per_dollar_spent_general_spend %></td>
+        <td><%= creditcard.foreign_transaction_fee %></td>
+        <td><%= creditcard.chip %></td>
+        <td><%= creditcard.notes %></td>
+        <td><%= creditcard.business %></td>
+        <td><%= creditcard.personal %></td>
+        <td><%= creditcard.image_index %></td>
+        <td><%= creditcard.url %></td>
+        <td><%= creditcard.country %></td>
+        <td><%= link_to 'Show', creditcard %></td>
+        <td><%= link_to 'Edit', edit_creditcard_path(creditcard) %></td>
+        <td><%= link_to 'Destroy', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Creditcard', new_creditcard_path %>

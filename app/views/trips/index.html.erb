@@ -1,0 +1,51 @@
+<h1>Listing trips</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Costinusd</th>
+      <th>Aacostpts</th>
+      <th>Aacostusd</th>
+      <th>Bacostpts</th>
+      <th>Bacostusd</th>
+      <th>Uacostpts</th>
+      <th>Uacostusd</th>
+      <th>Dlcostpts</th>
+      <th>Dlcostusd</th>
+      <th>Ascostpts</th>
+      <th>Ascostusd</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trips.each do |trip| %>
+      <tr>
+        <td><%= trip.name %></td>
+        <td><%= trip.costinusd %></td>
+        <td><%= trip.aacostpts %></td>
+        <td><%= trip.aacostusd %></td>
+        <td><%= trip.bacostpts %></td>
+        <td><%= trip.bacostusd %></td>
+        <td><%= trip.uacostpts %></td>
+        <td><%= trip.uacostusd %></td>
+        <td><%= trip.dlcostpts %></td>
+        <td><%= trip.dlcostusd %></td>
+        <td><%= trip.ascostpts %></td>
+        <td><%= trip.ascostusd %></td>
+        <td><%= link_to 'Show', trip, class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_trip_path(trip), class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Destroy', trip, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+        <td><%= link_to 'View recommendations', result_path(trip), class: 'btn btn-success' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Trip', new_trip_path, class: 'btn btn-primary' %>

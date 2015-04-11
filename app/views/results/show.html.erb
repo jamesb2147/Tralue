@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+<h1>Credit card recommendations for <%= @result.name %></h1>
+
+<table class="table table-hover">
+    <tr>
+        <th>Name</th>
+        <th>By</th>
+        <th>Percent of points required for trip provided by this card</th>
+        <th>Airline issuing ticket</th>
+        <th>Points to be earned</th>
+        <th>Points in program after transfer</th>
+        <th>Points cost</th>
+        <th>Cash copay</th>
+        <th>Includes transfer bonus?</th>
+        <th>Transfer notes</th>
+        <th>Credit card notes</th>
+        <th>Annual fee</th>
+        <th>Waived first year?</th>
+        <th>Application</th>
+        <th>Value of points</th>
+        <th>CPM value</th>
+        <!-- Total value of points for this redemption (cost of airfare - annual fee - copay) * percentage-->
+        <!-- CPM value -->
+    </tr>
+    
+    <% @result.arrayofcards.each do |a| %>
+        <tr>
+            <%= puts a["card"] %>
+            <td><%= link_to a["card"].name, creditcard_path(a["card"]) %></td>
+            <td><%= a["card"].issuer %></td>
+            <td><%= sprintf("%.0f", a["percentage"]) + "%" %></td>
+            <td><%= a["points_program"] %></td>
+            <td><%= sprintf("%.0f", if a["total_bonus"].nil? then 0 else a["total_bonus"] end) %></td>
+            <td><%= sprintf("%.0f", a["additional_points_in_program"]) %></td>
+            <td><%= a["miles_required"] %></td>
+            <td><%= "$" + sprintf("%.0f",a["copay"]) %></td>
+            <td><%= if a["includes_transfer_bonus"] then "Yes" else "No" end %></td>
+            <td><%= a["rate"].transfernotes %></td>
+            <td><%= a["card"].notes %></td>
+            <td><%= a["card"].annual_fee %></td>
+            <td><%= a["card"].fee_waived_first_year.to_s %></td>
+            <td><%= link_to a["card"].url, class: 'btn btn-success' do %>
+                Application
+            <% end %></td>
+            <td><%= sprintf("%.0f", (@costs.costinusd - ( if a["card"].fee_waived_first_year then 0 else a["card"].annual_fee end ) - a["copay"]) * a["percentage"] / 100) %></td>
+            <td><%= sprintf("%.1f", (@costs.costinusd - ( if a["card"].fee_waived_first_year then 0 else a["card"].annual_fee end ) - a["copay"]) * a["percentage"] / 100 / (a["card"].first_purchase_bonus + a["card"].spend_bonus + a["card"].spend_requirement) * a["rate"].transferratio * 100) %></td>
+        </tr>
+    <% end %>
+    
+</table>
+
+<%= link_to 'Back', trips_path, class: 'btn btn-primary' %>

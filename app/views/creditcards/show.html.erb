@@ -1,0 +1,109 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @creditcard.name %>
+</p>
+
+<p>
+  <strong>Issuer:</strong>
+  <%= @creditcard.issuer %>
+</p>
+
+<p>
+  <strong>Annual fee:</strong>
+  <%= @creditcard.annual_fee %>
+</p>
+
+<p>
+  <strong>Fee waived first year:</strong>
+  <%= @creditcard.fee_waived_first_year %>
+</p>
+
+<p>
+  <strong>Points program:</strong>
+  <%= @creditcard.points_program %>
+</p>
+
+<p>
+  <strong>Spend bonus:</strong>
+  <%= @creditcard.spend_bonus %>
+</p>
+
+<p>
+  <strong>Spend requirement:</strong>
+  <%= @creditcard.spend_requirement %>
+</p>
+
+<p>
+  <strong>Time to reach spend in months:</strong>
+  <%= @creditcard.time_to_reach_spend_in_months %>
+</p>
+
+<p>
+  <strong>First purchase bonus:</strong>
+  <%= @creditcard.first_purchase_bonus %>
+</p>
+
+<p>
+  <strong>Second year spend bonus:</strong>
+  <%= @creditcard.second_year_spend_bonus %>
+</p>
+
+<p>
+  <strong>Second year spend requirement:</strong>
+  <%= @creditcard.second_year_spend_requirement %>
+</p>
+
+<p>
+  <strong>Second year time to reach spend in months:</strong>
+  <%= @creditcard.second_year_time_to_reach_spend_in_months %>
+</p>
+
+<p>
+  <strong>Points per dollar spent general spend:</strong>
+  <%= @creditcard.points_per_dollar_spent_general_spend %>
+</p>
+
+<p>
+  <strong>Foreign transaction fee:</strong>
+  <%= @creditcard.foreign_transaction_fee %>
+</p>
+
+<p>
+  <strong>Chip:</strong>
+  <%= @creditcard.chip %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @creditcard.notes %>
+</p>
+
+<p>
+  <strong>Business:</strong>
+  <%= @creditcard.business %>
+</p>
+
+<p>
+  <strong>Personal:</strong>
+  <%= @creditcard.personal %>
+</p>
+
+<p>
+  <strong>Image index:</strong>
+  <%= @creditcard.image_index %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @creditcard.url %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @creditcard.country %>
+</p>
+
+<%= link_to 'Edit', edit_creditcard_path(@creditcard) %> |
+<%= link_to 'Back', creditcards_path %>

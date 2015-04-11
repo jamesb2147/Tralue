@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  issuer: MyString
+  annual_fee: 1
+  fee_waived_first_year: false
+  points_program: MyString
+  spend_bonus: 1
+  spend_requirement: 1
+  time_to_reach_spend_in_months: 1
+  first_purchase_bonus: 1
+  second_year_spend_bonus: 1
+  second_year_spend_requirement: 1
+  second_year_time_to_reach_spend_in_months: 1
+  points_per_dollar_spent_general_spend: 9.99
+  foreign_transaction_fee: 9.99
+  chip: MyString
+  notes: MyText
+  business: false
+  personal: false
+  image_index: 1
+  url: MyString
+  country: MyString
+
+two:
+  name: MyString
+  issuer: MyString
+  annual_fee: 1
+  fee_waived_first_year: false
+  points_program: MyString
+  spend_bonus: 1
+  spend_requirement: 1
+  time_to_reach_spend_in_months: 1
+  first_purchase_bonus: 1
+  second_year_spend_bonus: 1
+  second_year_spend_requirement: 1
+  second_year_time_to_reach_spend_in_months: 1
+  points_per_dollar_spent_general_spend: 9.99
+  foreign_transaction_fee: 9.99
+  chip: MyString
+  notes: MyText
+  business: false
+  personal: false
+  image_index: 1
+  url: MyString
+  country: MyString

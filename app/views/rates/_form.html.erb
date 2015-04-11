@@ -1,0 +1,33 @@
+<%= form_for(@rate) do |f| %>
+  <% if @rate.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rate.errors.count, "error") %> prohibited this rate from being saved:</h2>
+
+      <ul>
+      <% @rate.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :transferringprogram %><br>
+    <%= f.text_field :transferringprogram %>
+  </div>
+  <div class="field">
+    <%= f.label :transfereeprogram %><br>
+    <%= f.text_field :transfereeprogram %>
+  </div>
+  <div class="field">
+    <%= f.label :transferratio %><br>
+    <%= f.text_field :transferratio %>
+  </div>
+  <div class="field">
+    <%= f.label :transfernotes %><br>
+    <%= f.text_area :transfernotes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
