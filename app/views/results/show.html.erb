@@ -38,7 +38,7 @@
             <td><%= a["rate"].transfernotes %></td>
             <td><%= a["card"].notes %></td>
             <td><%= a["card"].annual_fee %></td>
-            <td><%= a["card"].fee_waived_first_year.to_s %></td>
+            <td><%= if a["card"].fee_waived_first_year then "Yes" else "No" end %></td>
             <td><%= link_to a["card"].url, class: 'btn btn-success' do %>
                 Application
             <% end %></td>
