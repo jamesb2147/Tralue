@@ -11,7 +11,8 @@ TralueDev1::Application.routes.draw do
   
   #created by hand
   resources :password_resets, only: [ :new, :create, :edit, :update ]
-  resources :user_sessions, only: [ :new, :create ]
+  resources :user_sessions, only: [ :new, :create, :delete ]
+  get 'logout' => 'user_sessions#destroy'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
