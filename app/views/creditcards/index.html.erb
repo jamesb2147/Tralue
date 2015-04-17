@@ -33,7 +33,7 @@
   <tbody>
     <% @creditcards.each do |creditcard| %>
       <tr>
-        <td><%= creditcard.name %></td>
+        <td><%= link_to creditcard.name, creditcard_path(creditcard), class: 'btn btn-info' %></td>
         <td><%= creditcard.issuer %></td>
         <td><%= creditcard.annual_fee %></td>
         <td><%= creditcard.fee_waived_first_year %></td>
@@ -54,9 +54,11 @@
         <td><%= creditcard.image_index %></td>
         <td><%= creditcard.url %></td>
         <td><%= creditcard.country %></td>
-        <td><%= link_to 'Show', creditcard %></td>
-        <td><%= link_to 'Edit', edit_creditcard_path(creditcard) %></td>
-        <td><%= link_to 'Destroy', creditcard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <div class="btn-group">
+          <td><%= link_to 'Show', creditcard_path(creditcard), class: 'btn btn-primary', type: 'button' %></td>
+          <td><%= link_to 'Edit', edit_creditcard_path(creditcard), class: 'btn btn-primary', type: 'button' %></td>
+          <td><%= link_to 'Destroy', creditcard, method: :delete, class: 'btn btn-danger', type: 'button', data: { confirm: 'Are you sure?' } %></td>
+        </div>
       </tr>
     <% end %>
   </tbody>
