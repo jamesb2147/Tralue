@@ -1,3 +1,7 @@
+Creditcard.create!([
+  {name: "Sapphire Preferred", issuer: "Chase", annual_fee: 95, fee_waived_first_year: true, points_program: "ur", spend_bonus: 40000, spend_requirement: 3000, time_to_reach_spend_in_months: 0, first_purchase_bonus: 0, second_year_spend_bonus: nil, second_year_spend_requirement: nil, second_year_time_to_reach_spend_in_months: nil, points_per_dollar_spent_general_spend: "1.0", foreign_transaction_fee: "0.0", chip: "Chip and signature", notes: "", business: false, personal: true, image_index: nil, url: "http://chase.com", country: "US"},
+  {name: "SPG", issuer: "American Express", annual_fee: 65, fee_waived_first_year: true, points_program: "spg", spend_bonus: 15000, spend_requirement: 5000, time_to_reach_spend_in_months: 6, first_purchase_bonus: 10000, second_year_spend_bonus: nil, second_year_spend_requirement: nil, second_year_time_to_reach_spend_in_months: nil, points_per_dollar_spent_general_spend: "1.0", foreign_transaction_fee: "2.7", chip: "Chip and signature", notes: "", business: false, personal: true, image_index: nil, url: "http://americanexpress.com", country: "US"}
+])
 Rate.create!([
   {transferringprogram: "ty", transfereeprogram: "cathay_pacific", transferratio: "1.0", transfernotes: ""},
   {transferringprogram: "ty", transfereeprogram: "eva", transferratio: "1.0", transfernotes: ""},
@@ -63,47 +67,12 @@ Rate.create!([
   {transferringprogram: "spg", transfereeprogram: "thai", transferratio: "1.0", transfernotes: ""},
   {transferringprogram: "spg", transfereeprogram: "united", transferratio: "0.5", transfernotes: ""},
   {transferringprogram: "spg", transfereeprogram: "virgin_australia", transferratio: "1.0", transfernotes: ""},
-  {transferringprogram: "spg", transfereeprogram: "virgin_atlantic", transferratio: "1.0", transfernotes: ""},
+  {transferringprogram: "spg", transfereeprogram: "virgin_atlantic", transferratio: "1.0", transfernotes: ""}
 ])
 Trip.create!([
-  {name: "Honeymoon", costinusd: "2400.0",
-    aacostpts: 160000, aacostusd: "200.0",
-    bacostpts: 250000, bacostusd: "200.0",
-    uacostpts: 125000, uacostusd: "150.0",
-    dlcostpts: 132500, dlcostusd: "150.0",
-    ascostpts: nil, ascostusd: nil,
-    nkcostpts: nil, nkcostusd: nil,
-    sqcostpts: 120000, sqcostusd: "150.0",
-    lacostpts: 254000, lacostusd: "150.0",
-    accostpts: 100000, accostusd: "1.0",
-    cxcostpts: nil, cxcostusd: nil,
-    brcostpts: nil, brcostusd: nil,
-    eycostpts: nil, eycostusd: nil,
-    afcostpts: nil, afcostusd: nil,
-    gacostpts: nil, gacostusd: nil,
-    mhcostpts: nil, mhcostusd: nil,
-    qfcostpts: nil, qfcostusd: nil,
-    qrcostpts: nil, qrcostusd: nil,
-    tgcostpts: nil, tgcostusd: nil,
-    vscostpts: nil, vscostusd: nil,
-    azcostpts: nil, azcostusd: nil,
-    nhcostpts: nil, nhcostusd: nil,
-    amcostpts: nil, amcostusd: nil,
-    lycostpts: nil, lycostusd: nil,
-    hacostpts: nil, hacostusd: nil,
-    ibcostpts: nil, ibcostusd: nil,
-    vxcostpts: nil, vxcostusd: nil,
-    abcostpts: nil, abcostusd: nil,
-    cacostpts: nil, cacostusd: nil,
-    nzcostpts: nil, nzcostusd: nil,
-    ozcostpts: nil, ozcostusd: nil,
-    mucostpts: nil, mucostusd: nil,
-    czcostpts: nil, czcostusd: nil,
-    ekcostpts: nil, ekcostusd: nil,
-    g3costpts: nil, g3costusd: nil,
-    hucostpts: nil, hucostusd: nil,
-    jlcostpts: nil, jlcostusd: nil,
-    lhcostpts: nil, lhcostusd: nil,
-    svcostpts: nil, svcostusd: nil,
-    vacostpts: nil, vacostusd: nil}
+  {name: "test", costinusd: "500.0", aacostpts: 50000, aacostusd: "40.0", bacostpts: 35000, bacostusd: "15.0", uacostpts: 40000, uacostusd: "100.0", dlcostpts: 58000, dlcostusd: "68.0", ascostpts: nil, ascostusd: nil, nkcostpts: nil, nkcostusd: nil, sqcostpts: nil, sqcostusd: nil, lacostpts: nil, lacostusd: nil, accostpts: nil, accostusd: nil, cxcostpts: nil, cxcostusd: nil, brcostpts: nil, brcostusd: nil, eycostpts: nil, eycostusd: nil, afcostpts: nil, afcostusd: nil, gacostpts: nil, gacostusd: nil, mhcostpts: nil, mhcostusd: nil, qfcostpts: nil, qfcostusd: nil, qrcostpts: nil, qrcostusd: nil, tgcostpts: nil, tgcostusd: nil, vscostpts: nil, vscostusd: nil, azcostpts: nil, azcostusd: nil, nhcostpts: nil, nhcostusd: nil, amcostpts: nil, amcostusd: nil, lycostpts: nil, lycostusd: nil, hacostpts: nil, hacostusd: nil, ibcostpts: nil, ibcostusd: nil, vxcostpts: nil, vxcostusd: nil, abcostpts: nil, abcostusd: nil, cacostpts: nil, cacostusd: nil, nzcostpts: nil, nzcostusd: nil, ozcostpts: nil, ozcostusd: nil, mucostpts: nil, mucostusd: nil, czcostpts: nil, czcostusd: nil, ekcostpts: nil, ekcostusd: nil, g3costpts: nil, g3costusd: nil, hucostpts: nil, hucostusd: nil, jlcostpts: nil, jlcostusd: nil, lhcostpts: nil, lhcostusd: nil, svcostpts: nil, svcostusd: nil, vacostpts: nil, vacostusd: nil, user_id: nil},
+  {name: "Honeymoon", costinusd: "2400.0", aacostpts: 160000, aacostusd: "200.0", bacostpts: 250000, bacostusd: "200.0", uacostpts: 125000, uacostusd: "150.0", dlcostpts: 132500, dlcostusd: "150.0", ascostpts: nil, ascostusd: nil, nkcostpts: nil, nkcostusd: nil, sqcostpts: 120000, sqcostusd: "150.0", lacostpts: 254000, lacostusd: "150.0", accostpts: 100000, accostusd: "1.0", cxcostpts: nil, cxcostusd: nil, brcostpts: nil, brcostusd: nil, eycostpts: nil, eycostusd: nil, afcostpts: nil, afcostusd: nil, gacostpts: nil, gacostusd: nil, mhcostpts: nil, mhcostusd: nil, qfcostpts: nil, qfcostusd: nil, qrcostpts: nil, qrcostusd: nil, tgcostpts: nil, tgcostusd: nil, vscostpts: nil, vscostusd: nil, azcostpts: nil, azcostusd: nil, nhcostpts: nil, nhcostusd: nil, amcostpts: nil, amcostusd: nil, lycostpts: nil, lycostusd: nil, hacostpts: nil, hacostusd: nil, ibcostpts: nil, ibcostusd: nil, vxcostpts: nil, vxcostusd: nil, abcostpts: nil, abcostusd: nil, cacostpts: nil, cacostusd: nil, nzcostpts: nil, nzcostusd: nil, ozcostpts: nil, ozcostusd: nil, mucostpts: nil, mucostusd: nil, czcostpts: nil, czcostusd: nil, ekcostpts: nil, ekcostusd: nil, g3costpts: nil, g3costusd: nil, hucostpts: nil, hucostusd: nil, jlcostpts: nil, jlcostusd: nil, lhcostpts: nil, lhcostusd: nil, svcostpts: nil, svcostusd: nil, vacostpts: nil, vacostusd: nil, user_id: nil}
+])
+User.create!([
+  {given_name: "Sean", family_name: "Hunter", email: "jamesb2147@gmail.com", password_digest: "$2a$10$BC3N2m6mYJjEzyi9uLXTe.b4HWZxOklKir5CsEZYcmjDH.dPwSUxG", country: "US", password_reset_token: nil}
 ])

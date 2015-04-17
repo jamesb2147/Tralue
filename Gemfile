@@ -37,6 +37,7 @@ gem 'autoprefixer-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'sprockets-rails'
 gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'seed_dump'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

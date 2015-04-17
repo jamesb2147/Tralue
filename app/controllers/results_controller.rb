@@ -21,7 +21,7 @@ class ResultsController < ApplicationController
     
     match_cards_and_programs
     
-    
+    sort_results
   end
 
   # GET /results/new
@@ -104,6 +104,10 @@ class ResultsController < ApplicationController
     
     def initialize_array_of_cards
       @result.arrayofcards = []
+    end
+    
+    def sort_results
+      @result.arrayofcards.sort_by!{ |e| e["percentage"].nil? ? 0 : e["percentage"] }.reverse!
     end
     
     def initialize_result_costs
@@ -733,11 +737,13 @@ class ResultsController < ApplicationController
       temphash["miles_required"] = miles_required
       temphash["copay"] = copay
       temphash["total_bonus"] = total_bonus
-      temphash["additional_points_in_program"] = total_bonus * rate.transferratio
+      temphash["additional_points_in_program"] = (if total_bonus then total_bonus else 0 end) * rate.transferratio
       temphash["bonus_notes"] = bonus_notes
       
-      if percentage > 0
-          @result.arrayofcards.push(temphash)
+      if percentage
+        if percentage > 0
+            @result.arrayofcards.push(temphash)
+        end
       end
     end
     
@@ -1264,11 +1270,13 @@ class ResultsController < ApplicationController
       temphash["miles_required"] = miles_required
       temphash["copay"] = copay
       temphash["total_bonus"] = total_bonus
-      temphash["additional_points_in_program"] = total_bonus * rate.transferratio
+      temphash["additional_points_in_program"] = (if total_bonus then total_bonus else 0 end) * rate.transferratio
       temphash["bonus_notes"] = bonus_notes
       
-      if percentage > 0
-          @result.arrayofcards.push(temphash)
+      if percentage
+        if percentage > 0
+            @result.arrayofcards.push(temphash)
+        end
       end
     end
 end
