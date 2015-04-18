@@ -91,9 +91,17 @@
     <%= f.label :url %><br>
     <%= f.text_field :url %>
   </div>
-  <div class="field">
+  <div class="dropdown">
     <%= f.label :country %><br>
-    <%= f.text_field :country %>
+    <%= f.select :country, options_for_select(%w[US JP]) %>
+  </div>
+  <div class="field">
+    <%= f.label :charge %><br>
+    <%= f.check_box :charge %>
+  </div>
+  <div class="field">
+    <%= f.label :credit %>
+    <%= f.check_box :credit %>
   </div>
   <div class="actions">
     <%= f.submit %>
