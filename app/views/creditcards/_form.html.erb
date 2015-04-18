@@ -103,6 +103,22 @@
     <%= f.label :credit %>
     <%= f.check_box :credit %>
   </div>
+  <div class="field">
+    <%= f.label :bonus_elite_miles %>
+    <%= f.number_field :bonus_elite_miles %>
+  </div>
+  <div class="field">
+    <%= f.label :elite_miles_spending_threshold %>
+    <%= f.number_field :elite_miles_spending_threshold %>
+  </div>
+  <div class="field">
+    <%= f.label :max_times_elite_miles_can_be_earned %>
+    <%= f.number_field :max_times_elite_miles_can_be_earned %>
+  </div>
+  <div class="field">
+    <%= f.label :active %>
+    <%= f.check_box :active %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
