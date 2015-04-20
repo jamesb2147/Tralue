@@ -196,6 +196,8 @@ class ResultsController < ApplicationController
     end
     
     def match_cards_and_programs
+      @result.arrayofcards = []
+      
       @rates.each do |rate|
         @cards.each do |card|
           if card.points_program == rate.transferringprogram
@@ -211,6 +213,16 @@ class ResultsController < ApplicationController
             end
           end
         end
+      end
+      
+      @cards.each do |card|
+        puts "Creating a rate"
+        
+        rate = Rate.new(transferringprogram: card.points_program,
+                        transfereeprogram: card.points_program,
+                        transferratio: 1.0)
+        
+        non_bonus_handler(rate, card)
       end
     end
     
