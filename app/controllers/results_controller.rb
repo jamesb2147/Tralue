@@ -195,34 +195,43 @@ class ResultsController < ApplicationController
       #@result.vacostusd = costs.vacostusd
     end
     
+    def is_active(card)
+      return card.active
+    end
+    
     def match_cards_and_programs
       @result.arrayofcards = []
       
       @rates.each do |rate|
         @cards.each do |card|
-          if card.points_program == rate.transferringprogram
-            if @result.arrayofcards == nil
-              @result.arrayofcards = []
-            end
-            
-            case rate.transferringprogram
-            when "spg"
-              spg_bonus_handler(rate, card)
-            else
-              non_bonus_handler(rate, card)
+          if is_active(card)
+            if card.points_program == rate.transferringprogram
+              if @result.arrayofcards == nil
+                @result.arrayofcards = []
+              end
+              
+              case rate.transferringprogram
+              when "spg"
+                spg_bonus_handler(rate, card)
+              else
+                non_bonus_handler(rate, card)
+              end
             end
           end
         end
       end
       
       @cards.each do |card|
-        puts "Creating a rate"
+        if is_active(card)
         
-        rate = Rate.new(transferringprogram: card.points_program,
-                        transfereeprogram: card.points_program,
-                        transferratio: 1.0)
+          puts "Creating a rate"
         
-        non_bonus_handler(rate, card)
+          rate = Rate.new(transferringprogram: card.points_program,
+                          transfereeprogram: card.points_program,
+                          transferratio: 1.0)
+        
+          non_bonus_handler(rate, card)
+        end
       end
     end
     

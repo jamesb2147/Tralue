@@ -11,6 +11,9 @@
   <h1><%= link_to "Tralue", root_path %></h1>
   <ul class="btn-group custom-nav-bar">
     <li>
+      <%= link_to "Credit cards", creditcards_path, class: 'btn btn-primary' %>
+    </li>
+    <li>
       <%= link_to "Trips", trips_path, class: 'btn btn-primary' %>
     </li>
     <% if logged_in %>
@@ -19,6 +22,14 @@
       <li>
         <%= link_to "Sign out", logout_path, class: 'btn btn-primary' %>
       </li>
+      <% if session[:user_id] == 1 %>
+        <li>
+          <%= link_to "Rates", rates_path, class: 'btn btn-primary' %>
+        </li>
+        <li>
+          <%= link_to "Users", users_path, class: 'btn btn-primary' %>
+        </li>
+      <% end %>
     <% else %>
       <li>
         <%= link_to "Sign in", new_user_session_path, class: 'btn btn-primary' %>
