@@ -782,57 +782,57 @@ class ResultsController < ApplicationController
       end
     end
     
-    def non_bonus_handler(rate_arg, card_arg, transfer_bonus_arg, &bonus_calculator)
-      #percentage_calculator = { percentage = ((card.first_purchase_bonus + card.spend_bonus + card.spend_requirement) * rate.transferratio) / @result.aacostpts * 100 }
-      rate = rate_arg
-      card = card_arg
-      includes_transfer_bonus = transfer_bonus_arg
-      
-      temphash = {"card" => card,
-                    "rate" => rate,
-                    "points_program" => nil,
-                    "percentage" => nil,
-                    "miles_required" => nil,
-                    "copay" => nil,
-                    "total_bonus" => nil,
-                    "points_in_program" => nil,
-                    "bonus_notes" => nil,
-                    "includes_transfer_bonus" => includes_transfer_bonus
-                    }
-      
-      points_program = nil
-      percentage = nil
-      miles_required = nil
-      copay = nil
-      total_bonus = nil
-      bonus_notes = nil
-      
-      total_standard_bonus = (0 + card.first_purchase_bonus + card.spend_bonus + card.spend_requirement)
-      
-      #temphash = {"card" => card,
-      #              "rate" => rate,
-      #              "points_program" => "United",
-      #              "percentage" => percentage,
-      #              "miles_required" => miles_required,
-      #              "copay" => copay,
-      #              "total_bonus" => nil,
-      #              "points_in_program" => nil,
-      #              "bonus_notes" => nil,
-      #              "includes_transfer_bonus" => true
-      #              }
-      
-      temphash["points_program"] = points_program
-      temphash["percentage"] = percentage
-      temphash["miles_required"] = miles_required
-      temphash["copay"] = copay
-      temphash["total_bonus"] = total_bonus
-      temphash["additional_points_in_program"] = (if total_bonus then total_bonus else 0 end) * rate.transferratio
-      temphash["bonus_notes"] = bonus_notes
-      
-      if percentage
-        if percentage > 0
-          @result.arrayofcards.push(temphash)
-        end
-      end
-    end
+    #def non_bonus_handler(rate_arg, card_arg, transfer_bonus_arg, &bonus_calculator)
+    #  #percentage_calculator = { percentage = ((card.first_purchase_bonus + card.spend_bonus + card.spend_requirement) * rate.transferratio) / @result.aacostpts * 100 }
+    #  rate = rate_arg
+    #  card = card_arg
+    #  includes_transfer_bonus = transfer_bonus_arg
+    #  
+    #  temphash = {"card" => card,
+    #                "rate" => rate,
+    #                "points_program" => nil,
+    #                "percentage" => nil,
+    #                "miles_required" => nil,
+    #                "copay" => nil,
+    #                "total_bonus" => nil,
+    #                "points_in_program" => nil,
+    #                "bonus_notes" => nil,
+    #                "includes_transfer_bonus" => includes_transfer_bonus
+    #                }
+    #  
+    #  points_program = nil
+    #  percentage = nil
+    #  miles_required = nil
+    #  copay = nil
+    #  total_bonus = nil
+    #  bonus_notes = nil
+    #  
+    #  total_standard_bonus = (0 + card.first_purchase_bonus + card.spend_bonus + card.spend_requirement)
+    #  
+    #  #temphash = {"card" => card,
+    #  #              "rate" => rate,
+    #  #              "points_program" => "United",
+    #  #              "percentage" => percentage,
+    #  #              "miles_required" => miles_required,
+    #  #              "copay" => copay,
+    #  #              "total_bonus" => nil,
+    #  #              "points_in_program" => nil,
+    #  #              "bonus_notes" => nil,
+    #  #              "includes_transfer_bonus" => true
+    #  #              }
+    #  
+    #  temphash["points_program"] = points_program
+    #  temphash["percentage"] = percentage
+    #  temphash["miles_required"] = miles_required
+    #  temphash["copay"] = copay
+    #  temphash["total_bonus"] = total_bonus
+    #  temphash["additional_points_in_program"] = (if total_bonus then total_bonus else 0 end) * rate.transferratio
+    #  temphash["bonus_notes"] = bonus_notes
+    #  
+    #  if percentage
+    #    if percentage > 0
+    #      @result.arrayofcards.push(temphash)
+    #    end
+    #  end
+    #end
 end
