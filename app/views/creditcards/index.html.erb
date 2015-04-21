@@ -1,6 +1,6 @@
 <h1>Listing creditcards</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -11,13 +11,10 @@
       <th>Spend bonus</th>
       <th>Spend requirement</th>
       <th>Time to reach spend in months</th>
-      <th>First purchase bonus</th>
-      <th>Points per dollar spent general spend</th>
       <th>Foreign transaction fee</th>
       <th>Chip</th>
       <th>Business</th>
       <th>Personal</th>
-      <th>Url</th>
       <th>Country</th>
       <th></th>
       <th></th>
@@ -36,13 +33,10 @@
         <td><%= creditcard.spend_bonus %></td>
         <td><%= creditcard.spend_requirement %></td>
         <td><%= creditcard.time_to_reach_spend_in_months %></td>
-        <td><%= creditcard.first_purchase_bonus %></td>
-        <td><%= creditcard.points_per_dollar_spent_general_spend %></td>
         <td><%= creditcard.foreign_transaction_fee %></td>
         <td><%= creditcard.chip %></td>
         <td><%= creditcard.business %></td>
         <td><%= creditcard.personal %></td>
-        <td><%= creditcard.url %></td>
         <td><%= creditcard.country %></td>
         <div class="btn-group">
           <td><%= link_to 'Show', creditcard_path(creditcard), class: 'btn btn-primary', type: 'button' %></td>

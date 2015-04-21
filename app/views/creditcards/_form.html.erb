@@ -11,115 +11,115 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :issuer %><br>
-    <%= f.text_field :issuer %>
+    <%= f.text_field :issuer, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :annual_fee %><br>
-    <%= f.number_field :annual_fee %>
+    <%= f.number_field :annual_fee, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :fee_waived_first_year %><br>
-    <%= f.check_box :fee_waived_first_year %>
+    <%= f.check_box :fee_waived_first_year, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :points_program %><br>
-    <%= f.text_field :points_program %>
+    <%= f.text_field :points_program, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :spend_bonus %><br>
-    <%= f.number_field :spend_bonus %>
+    <%= f.number_field :spend_bonus, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :spend_requirement %><br>
-    <%= f.number_field :spend_requirement %>
+    <%= f.number_field :spend_requirement, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :time_to_reach_spend_in_months %><br>
-    <%= f.number_field :time_to_reach_spend_in_months %>
+    <%= f.number_field :time_to_reach_spend_in_months, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :first_purchase_bonus %><br>
-    <%= f.number_field :first_purchase_bonus %>
+    <%= f.number_field :first_purchase_bonus, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :second_year_spend_bonus %><br>
-    <%= f.number_field :second_year_spend_bonus %>
+    <%= f.number_field :second_year_spend_bonus, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :second_year_spend_requirement %><br>
-    <%= f.number_field :second_year_spend_requirement %>
+    <%= f.number_field :second_year_spend_requirement, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :second_year_time_to_reach_spend_in_months %><br>
-    <%= f.number_field :second_year_time_to_reach_spend_in_months %>
+    <%= f.number_field :second_year_time_to_reach_spend_in_months, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :points_per_dollar_spent_general_spend %><br>
-    <%= f.text_field :points_per_dollar_spent_general_spend %>
+    <%= f.text_field :points_per_dollar_spent_general_spend, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :foreign_transaction_fee %><br>
-    <%= f.text_field :foreign_transaction_fee %>
+    <%= f.text_field :foreign_transaction_fee, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :chip %><br>
-    <%= f.text_field :chip %>
+    <%= f.text_field :chip, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :notes %><br>
-    <%= f.text_area :notes %>
+    <%= f.text_area :notes, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :business %><br>
-    <%= f.check_box :business %>
+    <%= f.check_box :business, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :personal %><br>
-    <%= f.check_box :personal %>
+    <%= f.check_box :personal, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :image_index %><br>
-    <%= f.number_field :image_index %>
+    <%= f.number_field :image_index, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :url %><br>
-    <%= f.text_field :url %>
+    <%= f.text_field :url, class: 'form-control' %>
   </div>
-  <div class="dropdown">
+  <div class="dropdown form-group">
     <%= f.label :country %><br>
-    <%= f.select :country, options_for_select(%w[US JP]) %>
+    <%= f.select :country, options_for_select(%w[US JP]), class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :charge %><br>
-    <%= f.check_box :charge %>
+    <%= f.check_box :charge, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :credit %>
-    <%= f.check_box :credit %>
+    <%= f.check_box :credit, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :bonus_elite_miles %>
-    <%= f.number_field :bonus_elite_miles %>
+    <%= f.number_field :bonus_elite_miles, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :elite_miles_spending_threshold %>
-    <%= f.number_field :elite_miles_spending_threshold %>
+    <%= f.number_field :elite_miles_spending_threshold, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :max_times_elite_miles_can_be_earned %>
-    <%= f.number_field :max_times_elite_miles_can_be_earned %>
+    <%= f.number_field :max_times_elite_miles_can_be_earned, class: 'form-control' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :active %>
-    <%= f.check_box :active %>
+    <%= f.check_box :active, class: 'form-control' %>
   </div>
-  <div class="actions">
+  <div class="form-group">
     <%= f.submit %>
   </div>
 <% end %>

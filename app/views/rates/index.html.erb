@@ -1,6 +1,6 @@
 <h1>Listing rates</h1>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Transferringprogram</th>
@@ -20,9 +20,9 @@
         <td><%= rate.transfereeprogram %></td>
         <td><%= rate.transferratio %></td>
         <td><%= rate.transfernotes %></td>
-        <td><%= link_to 'Show', rate %></td>
-        <td><%= link_to 'Edit', edit_rate_path(rate) %></td>
-        <td><%= link_to 'Destroy', rate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', rate, class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_rate_path(rate), class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Destroy', rate, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Rate', new_rate_path %>
+<%= link_to 'New Rate', new_rate_path, class: 'btn btn-primary' %>
