@@ -115,93 +115,10 @@ class ResultsController < ApplicationController
       @result = Result.new
       @result.name = @costs.name
       @result.costinusd = @costs.costinusd
-      #@result.aacostpts = @costs.aacostpts
-      #@result.aacostusd = @costs.aacostusd
-      #@result.bacostpts = @costs.bacostpts
-      #@result.bacostusd = @costs.bacostusd
-      #@result.uacostpts = @costs.uacostpts
-      #@result.uacostusd = @costs.uacostusd
-      #@result.dlcostpts = costs.dlcostpts
-      #@result.dlcostusd = costs.dlcostusd
-      #@result.ascostpts = costs.ascostpts
-      #@result.ascostusd = costs.ascostusd
-      #@result.nkcostpts = costs.nkcostpts
-      #@result.nkcostusd = costs.nkcostusd
-      #@result.sqcostpts = costs.sqcostpts
-      #@result.sqcostusd = costs.sqcostusd
-      #@result.lacostpts = costs.lacostpts
-      #@result.lacostusd = costs.lacostusd
-      #@result.accostpts = costs.accostpts
-      #@result.accostusd = costs.accostusd
-      #@result.cxcostpts = costs.cxcostpts
-      #@result.cxcostusd = costs.cxcostusd
-      #@result.brcostpts = costs.brcostpts
-      #@result.brcostusd = costs.brcostusd
-      #@result.eycostpts = costs.eycostpts
-      #@result.eycostusd = costs.eycostusd
-      #@result.afcostpts = costs.afcostpts
-      #@result.afcostusd = costs.afcostusd
-      #@result.gacostpts = costs.gacostpts
-      #@result.gacostusd = costs.gacostusd
-      #@result.mhcostpts = costs.mhcostpts
-      #@result.mhcostusd = costs.mhcostusd
-      #@result.qfcostpts = costs.qfcostpts
-      #@result.qfcostusd = costs.qfcostusd
-      #@result.qrcostpts = costs.qrcostpts
-      #@result.qrcostusd = costs.qrcostusd
-      #@result.tgcostpts = costs.tgcostpts
-      #@result.tgcostusd = costs.tgcostusd
-      #@result.vscostpts = costs.vscostpts
-      #@result.vscostusd = costs.vscostusd
-      #@result.azcostpts = costs.azcostpts
-      #@result.azcostusd = costs.azcostusd
-      #@result.nhcostpts = costs.nhcostpts
-      #@result.nhcostusd = costs.nhcostusd
-      #@result.amcostpts = costs.amcostpts
-      #@result.amcostusd = costs.amcostusd
-      #@result.lycostpts = costs.lycostpts
-      #@result.lycostusd = costs.lycostusd
-      #@result.hacostpts = costs.hacostpts
-      #@result.hacostusd = costs.hacostusd
-      #@result.ibcostpts = costs.ibcostpts
-      #@result.ibcostusd = costs.ibcostusd
-      #@result.vxcostpts = costs.vxcostpts
-      #@result.vxcostusd = costs.vxcostusd
-      #@result.abcostpts = costs.abcostpts
-      #@result.abcostusd = costs.abcostusd
-      #@result.cacostpts = costs.cacostpts
-      #@result.cacostusd = costs.cacostusd
-      #@result.nzcostpts = costs.nzcostpts
-      #@result.nzcostusd = costs.nzcostusd
-      #@result.ozcostpts = costs.ozcostpts
-      #@result.ozcostusd = costs.ozcostusd
-      #@result.mucostpts = costs.mucostpts
-      #@result.mucostusd = costs.mucostusd
-      #@result.czcostpts = costs.czcostpts
-      #@result.czcostusd = costs.czcostusd
-      #@result.ekcostpts = costs.ekcostpts
-      #@result.ekcostusd = costs.ekcostusd
-      #@result.g3costpts = costs.g3costpts
-      #@result.g3costusd = costs.g3costusd
-      #@result.hucostpts = costs.hucostpts
-      #@result.hucostusd = costs.hucostusd
-      #@result.jlcostpts = costs.jlcostpts
-      #@result.jlcostusd = costs.jlcostusd
-      #@result.lhcostpts = costs.lhcostpts
-      #@result.lhcostusd = costs.lhcostusd
-      #@result.svcostpts = costs.svcostpts
-      #@result.svcostusd = costs.svcostusd
-      #@result.vacostpts = costs.vacostpts
-      #@result.vacostusd = costs.vacostusd
     end
     
     def is_active(card)
       return card.active
-    end
-    
-    def test (blah, &block)
-      puts "Test called."
-      puts blah + block.call()
     end
     
     def match_cards_and_programs
@@ -211,17 +128,19 @@ class ResultsController < ApplicationController
         @cards.each do |card|
           if is_active(card)
             if card.points_program == rate.transferringprogram
+              puts card.points_program + " matches " + rate.transferringprogram
+              
               if @result.arrayofcards == nil
                 @result.arrayofcards = []
               end
               
               case rate.transferringprogram
               when "spg"
-                puts "SPG handler..."
+                #puts "SPG handler..."
                 bonus_handler(rate, card, true) { |total_standard_bonus| ((total_standard_bonus / 20000) * 5000 + total_standard_bonus) }
               else
-                puts "Non bonus handler..."
-                test("foo") { "bar" }
+                #puts "Non bonus handler..."
+                #puts "Card: " + card.name
                 bonus_handler(rate, card, nil) { |total_standard_bonus| 0 + total_standard_bonus }
               end
             end
@@ -232,7 +151,7 @@ class ResultsController < ApplicationController
       @cards.each do |card|
         if is_active(card)
         
-          puts "Creating a rate with: " + card.name + " and points program: " + card.points_program
+          #puts "Creating a rate with: " + card.name + " and points program: " + card.points_program
         
           rate = Rate.new(transferringprogram: card.points_program,
                           transfereeprogram: card.points_program,
@@ -374,7 +293,7 @@ class ResultsController < ApplicationController
           copay = @costs.lacostusd
           points_program = "LAN"
         end
-      when "aircanada"
+      when "aeroplan"
         #total_standard_bonus = (0 + card.first_purchase_bonus + card.spend_bonus + card.spend_requirement)
         total_bonus = bonus_calculator.call(total_standard_bonus)
         
@@ -590,7 +509,7 @@ class ResultsController < ApplicationController
           copay = @costs.vxcostusd
           points_program = "Virgin America"
         end
-      when "airberlin"
+      when "air_berlin"
         #total_standard_bonus = (0 + card.first_purchase_bonus + card.spend_bonus + card.spend_requirement)
         total_bonus = bonus_calculator.call(total_standard_bonus)
         
@@ -602,7 +521,7 @@ class ResultsController < ApplicationController
           copay = @costs.abcostusd
           points_program = "Air Berlin"
         end
-      when "airchina"
+      when "air_china"
         #total_standard_bonus = (0 + card.first_purchase_bonus + card.spend_bonus + card.spend_requirement)
         total_bonus = bonus_calculator.call(total_standard_bonus)
         
