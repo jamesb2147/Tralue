@@ -232,7 +232,7 @@ class ResultsController < ApplicationController
       @cards.each do |card|
         if is_active(card)
         
-          puts "Creating a rate"
+          puts "Creating a rate with: " + card.name + " and points program: " + card.points_program
         
           rate = Rate.new(transferringprogram: card.points_program,
                           transfereeprogram: card.points_program,
@@ -281,7 +281,6 @@ class ResultsController < ApplicationController
       case rate.transfereeprogram
       when "american"
         total_bonus = bonus_calculator.call(total_standard_bonus)
-        puts yield total_standard_bonus
         
         if @costs.aacostpts.nil?
           percentage = 0
@@ -771,6 +770,10 @@ class ResultsController < ApplicationController
       temphash["total_bonus"] = total_bonus
       temphash["additional_points_in_program"] = (if total_bonus then total_bonus else 0 end) * rate.transferratio
       temphash["bonus_notes"] = bonus_notes
+      
+      puts "Card: " + temphash["card"].name
+      puts "Points program: " + temphash["points_program"]
+      puts "Percentage: " + percentage
       
       if percentage
         if percentage > 0
