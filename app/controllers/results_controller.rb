@@ -690,9 +690,9 @@ class ResultsController < ApplicationController
       temphash["additional_points_in_program"] = (if total_bonus then total_bonus else 0 end) * rate.transferratio
       temphash["bonus_notes"] = bonus_notes
       
-      puts "Card: " + temphash["card"].name
-      puts "Points program: " + temphash["points_program"]
-      puts "Percentage: " + percentage
+      #puts "Card: " + temphash["card"].name
+      #puts "Points program: " + temphash["points_program"]
+      #puts "Percentage: " + percentage
       
       if percentage
         if percentage > 0

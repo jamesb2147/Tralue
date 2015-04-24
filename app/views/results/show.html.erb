@@ -1,28 +1,31 @@
 <p id="notice"><%= notice %></p>
 <h1>Credit card recommendations for <%= @result.name %></h1>
 
-<table class="table table-hover">
-    <tr>
-        <th>Name</th>
-        <th>By</th>
-        <th>Percent of points required for trip provided by this card</th>
-        <th>Airline issuing ticket</th>
-        <th>Points to be earned</th>
-        <th>Points in program after transfer</th>
-        <th>Points cost</th>
-        <th>Cash copay</th>
-        <th>Includes transfer bonus?</th>
-        <th>Transfer notes</th>
-        <th>Credit card notes</th>
-        <th>Annual fee</th>
-        <th>Waived first year?</th>
-        <th>Application</th>
-        <th>Value of points</th>
-        <th>CPM value</th>
-        <!-- Total value of points for this redemption (cost of airfare - annual fee - copay) * percentage-->
-        <!-- CPM value -->
-    </tr>
+<table class="table table-hover" data-mode="stack" data-tablesaw-minimap>
+    <thead>
+        <tr>
+            <th scope="col" data-tablesaw-priority="persist">Name</th>
+            <th scope="col" data-tablesaw-priority="1">By</th>
+            <th scope="col" data-tablesaw-priority="1">Percent of points required for trip provided by this card</th>
+            <th scope="col" data-tablesaw-priority="1">Airline issuing ticket</th>
+            <th scope="col" data-tablesaw-priority="1">Points to be earned</th>
+            <th scope="col" data-tablesaw-priority="1">Points in program after transfer</th>
+            <th scope="col" data-tablesaw-priority="1">Points cost</th>
+            <th scope="col" data-tablesaw-priority="1">Cash copay</th>
+            <th scope="col" data-tablesaw-priority="1">Includes transfer bonus?</th>
+            <th scope="col" data-tablesaw-priority="2">Transfer notes</th>
+            <th scope="col" data-tablesaw-priority="2">Credit card notes</th>
+            <th scope="col" data-tablesaw-priority="2">Annual fee</th>
+            <th scope="col" data-tablesaw-priority="3">Waived first year?</th>
+            <th scope="col" data-tablesaw-priority="4">Application</th>
+            <th scope="col" data-tablesaw-priority="5">Value of points</th>
+            <th scope="col" data-tablesaw-priority="6">CPM value</th>
+            <!-- Total value of points for this redemption (cost of airfare - annual fee - copay) * percentage-->
+            <!-- CPM value -->
+        </tr>
+    </thead>
     
+    <tbody>
     <% @result.arrayofcards.each do |a| %>
         <tr>
             <td><%= link_to a["card"].name, creditcard_path(a["card"]), class: 'btn btn-info' %></td>
@@ -45,6 +48,7 @@
             <td><%= sprintf("%.1f", (@costs.costinusd * a["percentage"] / 100 - ( if a["card"].fee_waived_first_year then 0 else a["card"].annual_fee end ) - a["copay"]) / (a["card"].first_purchase_bonus + a["card"].spend_bonus + a["card"].spend_requirement) * a["rate"].transferratio * 100) %></td>
         </tr>
     <% end %>
+    </tbody>
     
 </table>
 
