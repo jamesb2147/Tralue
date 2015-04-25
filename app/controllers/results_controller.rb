@@ -19,6 +19,8 @@ class ResultsController < ApplicationController
     load_variables
     initialize_variables
     
+    check_user
+    
     match_cards_and_programs
     
     sort_results
@@ -74,6 +76,17 @@ class ResultsController < ApplicationController
   end
 
   private
+    def check_user
+      if session[:user_id] == nil
+        redirect_to login_path
+      else
+        if session[:user_id] != @costs[:user_id]
+          redirect_to login_path
+        end
+      end
+      
+    end
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_result
       @result = Result.new
@@ -138,6 +151,11 @@ class ResultsController < ApplicationController
               when "spg"
                 #puts "SPG handler..."
                 bonus_handler(rate, card, true) { |total_standard_bonus| ((total_standard_bonus / 20000) * 5000 + total_standard_bonus) }
+              when "ty"
+                if rate.transfereeprogram == "etihad"
+                  bonus_handler(rate, card, true) { |total_standard_bonus| (total_standard_bonus * 1.25)}
+                end
+                
               else
                 #puts "Non bonus handler..."
                 #puts "Card: " + card.name
@@ -667,7 +685,7 @@ class ResultsController < ApplicationController
         end
       else
         #@debug_string << " Else reached."
-        puts "Else reached in results controller."
+        #puts "Else reached in results controller."
       end
       
       temphash = {"card" => card,
