@@ -1,25 +1,25 @@
 <p id="notice"><%= notice %></p>
 <h1>Credit card recommendations for <%= @result.name %></h1>
 
-<table class="table table-hover" data-mode="stack" data-tablesaw-minimap>
+<table class="tablesaw" data-mode="togglecolumn" data-tablesaw-mode="columntoggle" data-tablesaw-sortable data-tablesaw-sortable-switch data-tablesaw-minimap>
     <thead>
         <tr>
             <th scope="col" data-tablesaw-priority="persist">Name</th>
-            <th scope="col" data-tablesaw-priority="1">By</th>
-            <th scope="col" data-tablesaw-priority="1">Percent of points required for trip provided by this card</th>
-            <th scope="col" data-tablesaw-priority="1">Airline issuing ticket</th>
-            <th scope="col" data-tablesaw-priority="1">Points to be earned</th>
-            <th scope="col" data-tablesaw-priority="1">Points in program after transfer</th>
-            <th scope="col" data-tablesaw-priority="1">Points cost</th>
-            <th scope="col" data-tablesaw-priority="1">Cash copay</th>
-            <th scope="col" data-tablesaw-priority="1">Includes transfer bonus?</th>
-            <th scope="col" data-tablesaw-priority="2">Transfer notes</th>
-            <th scope="col" data-tablesaw-priority="2">Credit card notes</th>
-            <th scope="col" data-tablesaw-priority="2">Annual fee</th>
+            <th scope="col" data-tablesaw-priority="6">By</th>
+            <th scope="col" data-tablesaw-priority="1" data-tablesaw-sortable-col data-sortable-numeric>Percent of points required</th>
+            <th scope="col" data-tablesaw-priority="2">Airline issuing ticket</th>
+            <th scope="col" data-tablesaw-priority="3">Points to be earned</th>
+            <th scope="col" data-tablesaw-priority="3">Points in program after transfer</th>
+            <th scope="col" data-tablesaw-priority="3" data-tablesaw-sortable-col data-sortable-numeric>Points cost</th>
+            <th scope="col" data-tablesaw-priority="2" data-tablesaw-sortable-col data-sortable-numeric>Cash copay</th>
+            <th scope="col" data-tablesaw-priority="6">Includes transfer bonus?</th>
+            <th scope="col" data-tablesaw-priority="5">Transfer notes</th>
+            <th scope="col" data-tablesaw-priority="4">Credit card notes</th>
+            <th scope="col" data-tablesaw-priority="2" data-tablesaw-sortable-col data-sortable-numeric>Annual fee</th>
             <th scope="col" data-tablesaw-priority="3">Waived first year?</th>
-            <th scope="col" data-tablesaw-priority="4">Application</th>
-            <th scope="col" data-tablesaw-priority="5">Value of points</th>
-            <th scope="col" data-tablesaw-priority="6">CPM value</th>
+            <th scope="col" data-tablesaw-priority="1">Application</th>
+            <th scope="col" data-tablesaw-priority="2" data-tablesaw-sortable-col data-sortable-numeric>Value of points</th>
+            <th scope="col" data-tablesaw-priority="2" data-tablesaw-sortable-col data-sortable-numeric>CPM value</th>
             <!-- Total value of points for this redemption (cost of airfare - annual fee - copay) * percentage-->
             <!-- CPM value -->
         </tr>
