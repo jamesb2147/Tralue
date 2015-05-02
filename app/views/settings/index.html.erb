@@ -1,0 +1,49 @@
+<h1>Listing settings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Country</th>
+      <th>Show business cards</th>
+      <th>Show personal cards</th>
+      <th>Show credit cards</th>
+      <th>Show charge cards</th>
+      <th>Include bonuses in calculations</th>
+      <th>Include current point balances in calculations</th>
+      <th>Include authorized user bonus</th>
+      <th>Fly on star alliance</th>
+      <th>Fly on skyteam</th>
+      <th>Fly on oneworld</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @settings.each do |setting| %>
+      <tr>
+        <td><%= setting.user_id %></td>
+        <td><%= setting.country %></td>
+        <td><%= setting.show_business_cards %></td>
+        <td><%= setting.show_personal_cards %></td>
+        <td><%= setting.show_credit_cards %></td>
+        <td><%= setting.show_charge_cards %></td>
+        <td><%= setting.include_bonuses_in_calculations %></td>
+        <td><%= setting.include_current_point_balances_in_calculations %></td>
+        <td><%= setting.include_authorized_user_bonus %></td>
+        <td><%= setting.fly_on_star_alliance %></td>
+        <td><%= setting.fly_on_skyteam %></td>
+        <td><%= setting.fly_on_oneworld %></td>
+        <td><%= link_to 'Show', setting %></td>
+        <td><%= link_to 'Edit', edit_setting_path(setting) %></td>
+        <td><%= link_to 'Destroy', setting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Setting', new_setting_path %>

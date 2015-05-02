@@ -1,0 +1,103 @@
+<h1>Listing balances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aacostpts</th>
+      <th>Bacostpts</th>
+      <th>Uacostpts</th>
+      <th>Dlcostpts</th>
+      <th>Ascostpts</th>
+      <th>Nkcostpts</th>
+      <th>Sqcostpts</th>
+      <th>Lacostpts</th>
+      <th>Accostpts</th>
+      <th>Cxcostpts</th>
+      <th>Brcostpts</th>
+      <th>Eycostpts</th>
+      <th>Afcostpts</th>
+      <th>Gacostpts</th>
+      <th>Mhcostpts</th>
+      <th>Qfcostpts</th>
+      <th>Qrcostpts</th>
+      <th>Tgcostpts</th>
+      <th>Vscostpts</th>
+      <th>Azcostpts</th>
+      <th>Nhcostpts</th>
+      <th>Amcostpts</th>
+      <th>Lycostpts</th>
+      <th>Hacostpts</th>
+      <th>Ibcostpts</th>
+      <th>Vxcostpts</th>
+      <th>Abcostpts</th>
+      <th>Cacostpts</th>
+      <th>Nzcostpts</th>
+      <th>Ozcostpts</th>
+      <th>Mucostpts</th>
+      <th>Czcostpts</th>
+      <th>Ekcostpts</th>
+      <th>G3costpts</th>
+      <th>Hucostpts</th>
+      <th>Jlcostpts</th>
+      <th>Lhcostpts</th>
+      <th>Svcostpts</th>
+      <th>Vacostpts</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @balances.each do |balance| %>
+      <tr>
+        <td><%= balance.aacostpts %></td>
+        <td><%= balance.bacostpts %></td>
+        <td><%= balance.uacostpts %></td>
+        <td><%= balance.dlcostpts %></td>
+        <td><%= balance.ascostpts %></td>
+        <td><%= balance.nkcostpts %></td>
+        <td><%= balance.sqcostpts %></td>
+        <td><%= balance.lacostpts %></td>
+        <td><%= balance.accostpts %></td>
+        <td><%= balance.cxcostpts %></td>
+        <td><%= balance.brcostpts %></td>
+        <td><%= balance.eycostpts %></td>
+        <td><%= balance.afcostpts %></td>
+        <td><%= balance.gacostpts %></td>
+        <td><%= balance.mhcostpts %></td>
+        <td><%= balance.qfcostpts %></td>
+        <td><%= balance.qrcostpts %></td>
+        <td><%= balance.tgcostpts %></td>
+        <td><%= balance.vscostpts %></td>
+        <td><%= balance.azcostpts %></td>
+        <td><%= balance.nhcostpts %></td>
+        <td><%= balance.amcostpts %></td>
+        <td><%= balance.lycostpts %></td>
+        <td><%= balance.hacostpts %></td>
+        <td><%= balance.ibcostpts %></td>
+        <td><%= balance.vxcostpts %></td>
+        <td><%= balance.abcostpts %></td>
+        <td><%= balance.cacostpts %></td>
+        <td><%= balance.nzcostpts %></td>
+        <td><%= balance.ozcostpts %></td>
+        <td><%= balance.mucostpts %></td>
+        <td><%= balance.czcostpts %></td>
+        <td><%= balance.ekcostpts %></td>
+        <td><%= balance.g3costpts %></td>
+        <td><%= balance.hucostpts %></td>
+        <td><%= balance.jlcostpts %></td>
+        <td><%= balance.lhcostpts %></td>
+        <td><%= balance.svcostpts %></td>
+        <td><%= balance.vacostpts %></td>
+        <td><%= link_to 'Show', balance, class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_balance_path(balance), class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Destroy', balance, method: :delete, class: 'btn btn-primary', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Balance', new_balance_path, class: 'btn btn-primary' %>

@@ -13,7 +13,7 @@ class UserSessionsController < ApplicationController
       render action: 'new'
     end
     
-    redirect_to trips_path
+    redirect_to trips_path and return
   end
   
   def destroy

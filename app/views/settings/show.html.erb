@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @setting.user_id %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @setting.country %>
+</p>
+
+<p>
+  <strong>Show business cards:</strong>
+  <%= @setting.show_business_cards %>
+</p>
+
+<p>
+  <strong>Show personal cards:</strong>
+  <%= @setting.show_personal_cards %>
+</p>
+
+<p>
+  <strong>Show credit cards:</strong>
+  <%= @setting.show_credit_cards %>
+</p>
+
+<p>
+  <strong>Show charge cards:</strong>
+  <%= @setting.show_charge_cards %>
+</p>
+
+<p>
+  <strong>Include bonuses in calculations:</strong>
+  <%= @setting.include_bonuses_in_calculations %>
+</p>
+
+<p>
+  <strong>Include current point balances in calculations:</strong>
+  <%= @setting.include_current_point_balances_in_calculations %>
+</p>
+
+<p>
+  <strong>Include authorized user bonus:</strong>
+  <%= @setting.include_authorized_user_bonus %>
+</p>
+
+<p>
+  <strong>Fly on star alliance:</strong>
+  <%= @setting.fly_on_star_alliance %>
+</p>
+
+<p>
+  <strong>Fly on skyteam:</strong>
+  <%= @setting.fly_on_skyteam %>
+</p>
+
+<p>
+  <strong>Fly on oneworld:</strong>
+  <%= @setting.fly_on_oneworld %>
+</p>
+
+<%= link_to 'Edit', edit_setting_path(@setting) %> |
+<%= link_to 'Back', settings_path %>

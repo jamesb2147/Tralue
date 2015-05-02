@@ -31,9 +31,9 @@
     <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation, class: 'form-control' %>
   </div>
-  <div class="form-group">
+  <div class="dropdown form-group">
     <%= f.label :country %>
-    <%= f.text_field :country, options_for_select(%w[US JP]),class: 'form-control' %>
+    <%= f.select :country, options_for_select(%w[US JP]),class: 'form-control' %>
   </div>
   <div class="form-group">
     <%= f.submit :class => 'btn btn-primary' %>

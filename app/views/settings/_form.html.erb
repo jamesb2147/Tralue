@@ -1,0 +1,65 @@
+<%= form_for(@setting) do |f| %>
+  <% if @setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+
+      <ul>
+      <% @setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br>
+    <%= f.text_field :country %>
+  </div>
+  <div class="field">
+    <%= f.label :show_business_cards %><br>
+    <%= f.check_box :show_business_cards %>
+  </div>
+  <div class="field">
+    <%= f.label :show_personal_cards %><br>
+    <%= f.check_box :show_personal_cards %>
+  </div>
+  <div class="field">
+    <%= f.label :show_credit_cards %><br>
+    <%= f.check_box :show_credit_cards %>
+  </div>
+  <div class="field">
+    <%= f.label :show_charge_cards %><br>
+    <%= f.check_box :show_charge_cards %>
+  </div>
+  <div class="field">
+    <%= f.label :include_bonuses_in_calculations %><br>
+    <%= f.check_box :include_bonuses_in_calculations %>
+  </div>
+  <div class="field">
+    <%= f.label :include_current_point_balances_in_calculations %><br>
+    <%= f.check_box :include_current_point_balances_in_calculations %>
+  </div>
+  <div class="field">
+    <%= f.label :include_authorized_user_bonus %><br>
+    <%= f.check_box :include_authorized_user_bonus %>
+  </div>
+  <div class="field">
+    <%= f.label :fly_on_star_alliance %><br>
+    <%= f.check_box :fly_on_star_alliance %>
+  </div>
+  <div class="field">
+    <%= f.label :fly_on_skyteam %><br>
+    <%= f.check_box :fly_on_skyteam %>
+  </div>
+  <div class="field">
+    <%= f.label :fly_on_oneworld %><br>
+    <%= f.check_box :fly_on_oneworld %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

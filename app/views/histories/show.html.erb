@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Application date and time:</strong>
+  <%= @history.application_date_and_time %>
+</p>
+
+<p>
+  <strong>Card:</strong>
+  <%= @history.card_id %>
+</p>
+
+<p>
+  <strong>Approved:</strong>
+  <%= @history.approved %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @history.notes %>
+</p>
+
+<p>
+  <strong>Closed:</strong>
+  <%= @history.closed %>
+</p>
+
+<%= link_to 'Edit', edit_history_path(@history) %> |
+<%= link_to 'Back', histories_path %>

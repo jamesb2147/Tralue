@@ -1,0 +1,189 @@
+<%= form_for(@balance) do |f| %>
+  <% if @balance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@balance.errors.count, "error") %> prohibited this balance from being saved:</h2>
+
+      <ul>
+      <% @balance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="form-group">
+    <%= f.label :mr, "Membership Rewards point balance" %><br>
+    <%= f.number_field :mr, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ur, "Ultimate Rewards point balance" %><br>
+    <%= f.number_field :ur, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ty, "Thank You point balance" %><br>
+    <%= f.number_field :ty, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :spg, "Starwood Preferred Guest (SPG) point balance" %><br>
+    <%= f.number_field :spg, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :aacostpts, "American Airlines point balance" %><br>
+    <%= f.number_field :aacostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :bacostpts, "British Airways point balance" %><br>
+    <%= f.number_field :bacostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :uacostpts, "United point balance" %><br>
+    <%= f.number_field :uacostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :dlcostpts, "Delta point balance" %><br>
+    <%= f.number_field :dlcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ascostpts, "Alaska point balance" %><br>
+    <%= f.number_field :ascostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :nkcostpts, "Spirit point balance" %><br>
+    <%= f.number_field :nkcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :sqcostpts, "Singapore point balance" %><br>
+    <%= f.number_field :sqcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :lacostpts, "LAN point balance" %><br>
+    <%= f.number_field :lacostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :accostpts, "Air Canada point balance" %><br>
+    <%= f.number_field :accostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :cxcostpts, "Cathay Pacific point balance" %><br>
+    <%= f.number_field :cxcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :brcostpts %><br>
+    <%= f.number_field :brcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :eycostpts %><br>
+    <%= f.number_field :eycostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :afcostpts, "Flying Blue point balance" %><br>
+    <%= f.number_field :afcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :gacostpts, "Garuda Indonesia" %><br>
+    <%= f.number_field :gacostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mhcostpts, "Malaysia point balance" %><br>
+    <%= f.number_field :mhcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :qfcostpts %><br>
+    <%= f.number_field :qfcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :qrcostpts %><br>
+    <%= f.number_field :qrcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tgcostpts %><br>
+    <%= f.number_field :tgcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :vscostpts %><br>
+    <%= f.number_field :vscostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :azcostpts, "Alitalia point balance" %><br>
+    <%= f.number_field :azcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :nhcostpts, "ANA point balance" %><br>
+    <%= f.number_field :nhcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :amcostpts, "AeroMexico point balance" %><br>
+    <%= f.number_field :amcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :lycostpts %><br>
+    <%= f.number_field :lycostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :hacostpts, "Hawaiian point balance" %><br>
+    <%= f.number_field :hacostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ibcostpts, "Iberia Avios balance" %><br>
+    <%= f.number_field :ibcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :vxcostpts %><br>
+    <%= f.number_field :vxcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :abcostpts, "Air Berlin point balance" %><br>
+    <%= f.number_field :abcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :cacostpts %><br>
+    <%= f.number_field :cacostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :nzcostpts, "Air New Zealand point balance" %><br>
+    <%= f.number_field :nzcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ozcostpts %><br>
+    <%= f.number_field :ozcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mucostpts %><br>
+    <%= f.number_field :mucostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :czcostpts %><br>
+    <%= f.number_field :czcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :ekcostpts %><br>
+    <%= f.number_field :ekcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :g3costpts %><br>
+    <%= f.number_field :g3costpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :hucostpts %><br>
+    <%= f.number_field :hucostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :jlcostpts, "JAL point balance" %><br>
+    <%= f.number_field :jlcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :lhcostpts %><br>
+    <%= f.number_field :lhcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :svcostpts %><br>
+    <%= f.number_field :svcostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :vacostpts %><br>
+    <%= f.number_field :vacostpts, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %>

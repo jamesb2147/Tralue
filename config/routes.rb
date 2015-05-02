@@ -1,4 +1,12 @@
 TralueDev1::Application.routes.draw do
+  resources :histories
+
+  resources :countries
+
+  resources :balances
+
+  resources :settings
+
   resources :users
 
   resources :results

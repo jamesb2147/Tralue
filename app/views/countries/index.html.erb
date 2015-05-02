@@ -1,0 +1,29 @@
+<h1>Listing countries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Country</th>
+      <th>Country long form</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @countries.each do |country| %>
+      <tr>
+        <td><%= country.country %></td>
+        <td><%= country.country_long_form %></td>
+        <td><%= link_to 'Show', country, class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_country_path(country), class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Destroy', country, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Country', new_country_path, class: 'btn btn-primary' %>

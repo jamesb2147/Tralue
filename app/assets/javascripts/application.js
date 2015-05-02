@@ -14,7 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require respond
-//= require dialog
-//= require tablesaw
+
 //= require_tree .

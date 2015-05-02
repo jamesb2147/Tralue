@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @country.country %>
+</p>
+
+<p>
+  <strong>Country long form:</strong>
+  <%= @country.country_long_form %>
+</p>
+
+<%= link_to 'Edit', edit_country_path(@country), class: 'btn btn-primary' %> |
+<%= link_to 'Back', countries_path, class: 'btn btn-primary' %>

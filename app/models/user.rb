@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
 has_secure_password
 has_many :trips
+has_one :setting
+has_one :balance
+has_one :history
 #attr_accessor :password, :password_confirmation are created with has_secure_password
 
 validates :email, presence: true, uniqueness: true, format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/ }
