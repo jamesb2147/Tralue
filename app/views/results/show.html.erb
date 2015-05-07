@@ -28,7 +28,9 @@
     <tbody>
     <% @result.arrayofcards.each do |a| %>
         <tr>
-            <td><%= link_to a["card"].name, creditcard_path(a["card"]), class: 'btn btn-info' %></td>
+            <td><%= link_to a["card"].name, creditcard_path(a["card"]), class: 'btn btn-info' %>
+                <%= if a["card2"] then '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe end %>
+                <%= if a["card2"] then link_to a["card2"].name, creditcard_path(a["card2"]), class: 'btn btn-info' else end %></td>
             <td><%= a["card"].issuer %></td>
             <td><%= sprintf("%.0f", a["percentage"]) + "%" %></td>
             <td><%= a["points_program"] %></td>

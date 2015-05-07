@@ -151,10 +151,12 @@ class ResultsController < ApplicationController
               when "spg"
                 #puts "SPG handler..."
                 bonus_handler(rate, card, true) { |total_standard_bonus| ((total_standard_bonus / 20000) * 5000 + total_standard_bonus) }
-              when "ty"
-                if rate.transfereeprogram == "etihad"
-                  bonus_handler(rate, card, true) { |total_standard_bonus| (total_standard_bonus * 1.25)}
-                end
+                
+              #GREAT example of how to implement temporary transfer bonuses here
+              #when "ty"
+              #  if rate.transfereeprogram == "etihad"
+              #    bonus_handler(rate, card, true) { |total_standard_bonus| (total_standard_bonus * 1.25)}
+              #  end
                 
               else
                 #puts "Non bonus handler..."
@@ -714,6 +716,7 @@ class ResultsController < ApplicationController
       
       if percentage
         if percentage > 0
+          #temphash["card2"] = card
           @result.arrayofcards.push(temphash)
         end
       end
