@@ -26,28 +26,224 @@
     </thead>
     
     <tbody>
-    <% @result.arrayofcards.each do |a| %>
+    <% @result.arrayofcards.each do |array_a| %>
         <tr>
-            <td><%= link_to a["card"].name, creditcard_path(a["card"]), class: 'btn btn-info' %>
-                <%= if a["card2"] then '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe end %>
-                <%= if a["card2"] then link_to a["card2"].name, creditcard_path(a["card2"]), class: 'btn btn-info' else end %></td>
-            <td><%= a["card"].issuer %></td>
-            <td><%= sprintf("%.0f", a["percentage"]) + "%" %></td>
-            <td><%= a["points_program"] %></td>
-            <td><%= sprintf("%.0f", if a["total_bonus"].nil? then 0 else a["total_bonus"] end) %></td>
-            <td><%= sprintf("%.0f", a["additional_points_in_program"]) %></td>
-            <td><%= a["miles_required"] %></td>
-            <td><%= "$" + sprintf("%.0f",a["copay"]) %></td>
-            <td><%= if a["includes_transfer_bonus"] then "Yes" else "No" end %></td>
-            <td><%= a["rate"].transfernotes %></td>
-            <td><%= a["card"].notes %></td>
-            <td><%= a["card"].annual_fee %></td>
-            <td><%= if a["card"].fee_waived_first_year then "Yes" else "No" end %></td>
-            <td><%= link_to a["card"].url, class: 'btn btn-success' do %>
-                Application
-            <% end %></td>
-            <td><%= sprintf("%.0f", (@costs.costinusd * a["percentage"] / 100 - ( if a["card"].fee_waived_first_year then 0 else a["card"].annual_fee end ) - a["copay"])) %></td>
-            <td><%= sprintf("%.1f", (@costs.costinusd * a["percentage"] / 100 - ( if a["card"].fee_waived_first_year then 0 else a["card"].annual_fee end ) - a["copay"]) / (a["card"].first_purchase_bonus + a["card"].spend_bonus + a["card"].spend_requirement) * a["rate"].transferratio * 100) %></td>
+        <% array_a.pop %>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    link_to a["card"].name, creditcard_path(a["card"]), class: 'btn btn-info'
+                else
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    link_to a["card"].name, creditcard_path(a["card"]), class: 'btn btn-info'
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0 
+                    a["card"].issuer
+                
+                    #bugger
+                else
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    a["card"].issuer
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    sprintf("%.0f", a["percentage"]) + "%"
+                
+                    #blah
+                else
+                    #code with glyphicon
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    sprintf("%.0f", a["percentage"]) + "%"
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    a["points_program"]
+                
+                    #blah
+                else
+                    #code with glyphicon
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    a["points_program"]
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    sprintf("%.0f", if a["total_bonus"].nil? then 0 else a["total_bonus"] end)
+                
+                    #blah
+                else
+                    #code with glyphicon
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    sprintf("%.0f", if a["total_bonus"].nil? then 0 else a["total_bonus"] end)
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    #code
+                    sprintf("%.0f", a["additional_points_in_program"])
+                
+                    #blah
+                else
+                    #code with glyphicon
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    sprintf("%.0f", a["additional_points_in_program"])
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    #code
+                    a["miles_required"]
+                
+                    #blah
+                else
+                    #code with glyphicon
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    a["miles_required"]
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    #code
+                    "$" + sprintf("%.0f",a["copay"])
+                
+                    #blah
+                else
+                    #code with glyphicon
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    "$" + sprintf("%.0f",a["copay"])
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    #code
+                    if a["includes_transfer_bonus"] then "Yes" else "No" end
+                
+                    #blah
+                else
+                    #code with glyphicon
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    if a["includes_transfer_bonus"] then "Yes" else "No" end
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    #code
+                    a["rate"].transfernotes
+                
+                    #blah
+                else
+                    #code with glyphicon
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    a["rate"].transfernotes
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    #code
+                    a["card"].notes
+                
+                    #blah
+                else
+                    #code with glyphicon
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    a["card"].notes
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    #code
+                    a["card"].annual_fee
+                
+                    #blah
+                else
+                    #code with glyphicon
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    a["card"].annual_fee
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    #code
+                    if a["card"].fee_waived_first_year then "Yes" else "No" end
+                
+                    #blah
+                else
+                    #code with glyphicon
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    if a["card"].fee_waived_first_year then "Yes" else "No" end
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    #code
+                    link_to 'Application', a["card"].url, class: 'btn btn-success'
+                
+                    #blah
+                else
+                    #code with glyphicon
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    link_to 'Application', a["card"].url, class: 'btn btn-success'
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    #
+                    sprintf("%.0f", (@costs.costinusd * a["percentage"] / 100 - ( if a["card"].fee_waived_first_year then 0 else a["card"].annual_fee end ) - a["copay"]))
+                
+                    #
+                else
+                    #code with glyphicon
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    sprintf("%.0f", (@costs.costinusd * a["percentage"] / 100 - ( if a["card"].fee_waived_first_year then 0 else a["card"].annual_fee end ) - a["copay"]))
+                end %>
+            <% end %>
+            </td>
+            <td>
+            <% array_a.each_with_index do |a, index| %>
+                <%= if index == 0
+                    #
+                    sprintf("%.1f", (@costs.costinusd * a["percentage"] / 100 - ( if a["card"].fee_waived_first_year then 0 else a["card"].annual_fee end ) - a["copay"]) / (a["card"].first_purchase_bonus + a["card"].spend_bonus + a["card"].spend_requirement) * a["rate"].transferratio * 100)
+                
+                    #
+                else
+                    #code with glyphicon
+                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe
+                    sprintf("%.1f", (@costs.costinusd * a["percentage"] / 100 - ( if a["card"].fee_waived_first_year then 0 else a["card"].annual_fee end ) - a["copay"]) / (a["card"].first_purchase_bonus + a["card"].spend_bonus + a["card"].spend_requirement) * a["rate"].transferratio * 100)
+                end %>
+            <% end %>
+            </td>
         </tr>
     <% end %>
     </tbody>

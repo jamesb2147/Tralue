@@ -120,7 +120,7 @@ class ResultsController < ApplicationController
     end
     
     def sort_results
-      @result.arrayofcards.sort_by!{ |e| e["percentage"].nil? ? 0 : e["percentage"] }.reverse!
+      @result.arrayofcards.sort_by!{ |e| e[2].nil? ? 0 : e[2] }.reverse!
     end
     
     def initialize_result_costs
@@ -717,7 +717,17 @@ class ResultsController < ApplicationController
       if percentage
         if percentage > 0
           #temphash["card2"] = card
-          @result.arrayofcards.push(temphash)
+          temparray = Array.new
+          #puts "temphash = "
+          #puts temphash
+          temparray.push(temphash)
+          #temparray.push(temphash)
+          temparray.push(1.0 * temphash["percentage"])
+          #puts "temparray = "
+          #puts temparray
+          @result.arrayofcards.push(temparray)
+          #puts "@result.arrayofcards = "
+          #puts @result.arrayofcards
         end
       end
     end
