@@ -1,4 +1,4 @@
 class Setting < ActiveRecord::Base
   belongs_to :user
-  #has_one :country
+  belongs_to :country
 end
