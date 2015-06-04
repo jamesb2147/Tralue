@@ -39,6 +39,16 @@ gem 'sprockets-rails'
 gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'seed_dump'
 
+#Pretty print
+gem 'awesome_print', require: "ap"
+
+#rails dev tools everyone should have
+gem 'meta_request', group: :development
+gem 'peek', group: :development
+gem 'pry-rails', group: 'development'
+gem 'quiet_assets', group: :development
+gem 'newrelic_rpm', group: :development
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
