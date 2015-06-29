@@ -9,7 +9,6 @@ has_one :history
 validates :email, presence: true, uniqueness: true, format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/ }
 validates :given_name, presence: true
 validates :family_name, presence: true
-validates :country, presence: true, format: { with: /\A[A-Za-z][A-Za-z]\z/ }
 
 before_save { downcase_email }
 

@@ -11,21 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
+  <div class="dropdown form-group">
     <%= f.label :country %><br>
-    <%= f.text_field :country %>
+    <%= f.collection_select :country_id, Country.all, :id, :country_long_form, :prompt => true %>
   </div>
   <div class="field">
     <%= f.label :show_business_cards %><br>
     <%= f.check_box :show_business_cards %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :show_personal_cards %><br>
-    <%= f.check_box :show_personal_cards %>
+    <%= f.check_box :show_personal_cards, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :show_credit_cards %><br>
@@ -34,6 +30,10 @@
   <div class="field">
     <%= f.label :show_charge_cards %><br>
     <%= f.check_box :show_charge_cards %>
+  </div>
+  <div class="form-group">
+    <%= f.label :maximum_cards_comfortable_applying_for_at_once %>
+    <%= f.number_field :maximum_cards_comfortable_applying_for_at_once, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :include_bonuses_in_calculations %><br>
@@ -60,6 +60,6 @@
     <%= f.check_box :fly_on_oneworld %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn btn-primary' %>
   </div>
 <% end %>

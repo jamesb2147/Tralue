@@ -93,7 +93,9 @@
   </div>
   <div class="dropdown form-group">
     <%= f.label :country %><br>
-    <%= f.select :country, options_for_select(Country.all.map{|s| [s.country_long_form, s]}), class: 'form-control' %>
+    <%= #f.select :country_id, options_for_select(Country.all.map{|s| [s.country_long_form, s.id]}), class: 'form-control'
+    %>
+    <%= f.collection_select :country_id, Country.all, :id, :country_long_form, :prompt => true %>
   </div>
   <div class="form-group">
     <%= f.label :charge %><br>

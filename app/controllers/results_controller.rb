@@ -1,4 +1,5 @@
 class ResultsController < ApplicationController
+  before_action :require_user
   before_action :set_result, only: [:show, :edit, :update, :destroy]
 
   # GET /results
@@ -81,7 +82,7 @@ class ResultsController < ApplicationController
         redirect_to login_path
       else
         if session[:user_id] != @costs[:user_id]
-          redirect_to login_path
+          redirect_to login_path, notice: "You are not permitted to view this trip."
         end
       end
       
@@ -99,6 +100,7 @@ class ResultsController < ApplicationController
     
     def load_variables
       load_cards
+      load_balances
       load_rates
     end
     
@@ -109,6 +111,10 @@ class ResultsController < ApplicationController
     
     def load_cards
       @cards = Creditcard.all
+    end
+    
+    def load_balances
+      @balances = current_user.balance
     end
     
     def load_rates
@@ -123,23 +129,19 @@ class ResultsController < ApplicationController
       #puts "Sort results; arrayofcards:"
       #ap @result.arrayofcards
       @result.arrayofcards.sort_by!{ |e| e["total_percentage"].nil? ? 0 : e["total_percentage"] }.reverse!
-      custom_sort(@result.arrayofcards)
+      magic_weight
     end
     
-    def custom_sort(to_sort)
-      #binding.pry
-      to_sort.sort! do |a, b|
-        #binding.pry
-        case
-        when a["array"].length < b["array"].length
-          return -1
-        when a["array"].length > b["array"].length 
-          return 1
-        else
-          return 0
-        end
+    #sort needs to find the 100% mark with the fewest number of cards recommended possible
+    #if nothing is >100% of mark, try calculating with one more card...
+    #if that result is >100% of mark, suggest user adjust maximum number of recommended cards up by one with a single click
+    
+    def magic_weight
+      binding.pry
+      
+      @result.arrayofcards.each do |bundle|
+        
       end
-      #binding.pry
     end
     
     def initialize_result_costs
@@ -236,20 +238,23 @@ class ResultsController < ApplicationController
       
       initialize_array_of_cards
       
+      if @result.arrayofcards == nil
+        @result.arrayofcards = []
+      end #@result.arrayofcards == nil
+      
+      if current_user.balance.nil?
+        #do NOT create balance creditcards
+      else
+        create_balance_creditcards
+      end
+      
       @rates.each do |rate|
         @cards.each do |card|
           if is_active(card)
             if card.points_program == rate.transferringprogram
               #puts card.points_program + " matches " + rate.transferringprogram
               
-              if @result.arrayofcards == nil
-                @result.arrayofcards = []
-              end
               
-              #puts "rate:"
-              #ap rate
-              #puts "creditcard:"
-              #ap card
               
               
               case rate.transferringprogram
@@ -260,7 +265,7 @@ class ResultsController < ApplicationController
                   #puts "temparray from bonus_handler:"
                   #ap temparray
                   @result.arrayofcards.push(temparray) 
-                end
+                end #temparray.nil?
                 
               #GREAT example of how to implement temporary transfer bonuses here
               #when "ty"
@@ -276,13 +281,14 @@ class ResultsController < ApplicationController
                   #puts "temparray from bonus_handler:"
                   #ap temparray
                   @result.arrayofcards.push(temparray)
-                end
+                end #temparray.nil?
                 
                 
-              end
-            end
-          end
-        end
+              end #else not case "spg"
+            end #if card.points_program == rate.transferringprogram
+          end #if is_active(card)
+        end #cards.each do |card|
+        
       end
       
       @cards.each do |card|
@@ -308,66 +314,11 @@ class ResultsController < ApplicationController
         end
       end
       
-      #puts "DARN!"
+      #LINEARLY BUILDING CREDITCARD RECOMMENDATION BUNDLES
+      linear_build_creditcard_recommendation_bundles
       
-      #puts "Array of cards before recursion:"
-      #ap @result.arrayofcards
-      
-      @result.arrayofcards.each do |bundle|
-        bundle.each do |interior_bundle|
-          #puts "Name"
-          #puts interior_bundle["card"].name
-          #puts "Transferring program:"
-          #puts interior_bundle["rate"].transferringprogram
-          #puts "Percentage:"
-          #puts interior_bundle["percentage"]
-        end
-      end
-      
-      #RECURSIVELY BUILDING RECOMMENDATION BUNDLES
-      #pen = Array.new
-      #length = @result.arrayofcards.length
-      #@result.arrayofcards.each_with_index do |card_rate_etc, index|
-      #  pen.push(recursive_build_recommendation_bundles(card_rate_etc, index, 3, nil, length))
-      #end
-      #
-      #puts "Printing pen:"
-      #ap pen
-      #
-      #calculate_bundle_totals(pen)
-      #
-      #pen.each do |element|
-      #  @result.arrayofcards.push(element)
-      #end
-      
-      #LINEARLY BUILDING RECOMMENDATION BUNDLES
-      linear_build_recommendation_bundles
-      
-      #puts "Printing arrayofcards:"
-      #ap @result.arrayofcards
-      
-      #puts "Sorting results:"
-      #ap @result.arrayofcards
-      
-      #puts "Printing array through outside iterator:"
-      #@result.arrayofcards.each_with_index do |array_a, index|
-      #  puts "Array at index: "
-      #  puts index
-      #  ap array_a
-      #  
-      #  puts "Printing array through internal iterator:"
-      #  array_a.each_with_index do |each, index_2|
-      #    puts "Array at internal index: "
-      #    puts index_2
-      #    ap each
-      #  end
-      #end
-      
-      #build_recommendation_bundles
       calculate_recommendation_totals
     end
-    
-
     
     def build_recommendation_bundles
       holding_pen = Array.new
@@ -419,7 +370,7 @@ class ResultsController < ApplicationController
       #ap @result.arrayofcards
     end
     
-    def linear_build_recommendation_bundles
+    def linear_build_creditcard_recommendation_bundles
       arrayofcards_temp = @result.arrayofcards.dup
       
       #binding.pry
@@ -468,54 +419,234 @@ class ResultsController < ApplicationController
       end
     end
     
-    #card should always be the first card
-    #that means the starting position should always be the index of the first card... 0
-    #remaining calls is the maximum number of calls to recommend (aka how deep to run the recursion tree)
-    #result_array should be nil
-    def recursive_build_recommendation_bundles (card_rate_etc, position, remaining_calls, result_array, length)
-      @result.arrayofcards.each_with_index do |iterative_card_rate_etc, index|
-        if index > position && index < length
-          iterative_card_rate_etc.each do |interior_iterative_card_rate_etc|
-            card_rate_etc.each do |interior_card_rate_etc|
-              #puts "card_rate_etc:"
-              #ap card_rate_etc
-              #puts "iterative_card_rate_etc:"
-              #ap iterative_card_rate_etc
-              
-              #puts "Interior card_rate_etc:"
-              #ap interior_card_rate_etc
-              #puts "Interior iterative_card_rate_etc:"
-              #ap interior_iterative_card_rate_etc
-              
-              if interior_card_rate_etc["card"].issuer != interior_iterative_card_rate_etc["card"].issuer || (interior_card_rate_etc["card"].business != interior_iterative_card_rate_etc["card"].business || interior_card_rate_etc["card"].personal != interior_iterative_card_rate_etc["card"].personal)
-                if remaining_calls > 0
-                  if interior_card_rate_etc["rate"].transfereeprogram == interior_iterative_card_rate_etc["rate"].transfereeprogram
-                    if result_array == nil
-                      result_array = Array.new
-                      result_array.push(interior_card_rate_etc)
-                    end #if result_array == nil
-                    
-                    #puts "Matched! Here's what the interior iterative_card_rate_etc looks like now:"
-                    #ap interior_iterative_card_rate_etc
-                    result_array.push(interior_iterative_card_rate_etc)
-                    #puts "Pushed the interior iterative_card_rate_etc onto the result_array. Here's the result_array now:"
-                    #ap result_array
-                    #puts "The iterative_card_rate_etc now:"
-                    #ap iterative_card_rate_etc
-                    
-                    recursive_build_recommendation_bundles(iterative_card_rate_etc, index, (remaining_calls - 1), result_array, length)
-                    
-                    return result_array
-                  end #if card_rate_etc transfereeprogram == iterative_card_rate_etc transfereeprogram
-                else
-                  return
-                end #if remaining calls > 0
-              end #if issuer != issuer || (business != business || personal != personal)
-            end #iteration through interior_card_rate_etc array
-          end #iteration through interior_iterative_card_rate_etc array
-        end #if index > position
-      end #iteration through all basic cards
-    end #definition
+    def create_balance_creditcards
+      creditcard = Creditcard.new
+      creditcard.attributes = {personal: true,
+                              business: true,
+                              credit: true,
+                              charge: true,
+                              active: true,
+                              spend_bonus: 0,
+                              spend_requirement: 0,
+                              annual_fee: 0}
+      
+      creditcard.attributes = {name: "Starwood Preferred Guest balance",
+                              points_program: "spg",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Membership Rewards balance",
+                              points_program: "mr",
+                              first_purchase_bonus: @balances.mrbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Ultimate Rewards balance",
+                              points_program: "ur",
+                              first_purchase_bonus: @balances.urbalance}
+      @cards.push(creditcard)
+      
+      
+      
+      creditcard.attributes = {name: "Thank You balance",
+                              points_program: "ty",
+                              first_purchase_bonus: @balances.tybalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "American balance",
+                              points_program: "american",
+                              first_purchase_bonus: @balances.aabalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "British Airways balance",
+                              points_program: "ba",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "United balance",
+                              points_program: "united",
+                              first_purchase_bonus: @balances.uabalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Delta balance",
+                              points_program: "delta",
+                              first_purchase_bonus: @balances.dlbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Alaska balance",
+                              points_program: "alaska",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Spirit balance",
+                              points_program: "spirit",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Singapore balance",
+                              points_program: "singapore",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "LAN balance",
+                              points_program: "lan",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Aeroplan balance",
+                              points_program: "aeroplan",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Cathay Pacific balance",
+                              points_program: "cathay_pacific",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "EVA balance",
+                              points_program: "eva",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Etihad balance",
+                              points_program: "etihad",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Flying Blue balance",
+                              points_program: "flying_blue",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Garuda Indonesia balance",
+                              points_program: "garuda_indonesia",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Malaysia balance",
+                              points_program: "malaysia",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Qantas balance",
+                              points_program: "qantas",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Qatar balance",
+                              points_program: "qatar",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Thai Airways balance",
+                              points_program: "thai",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Virgin Atlantic balance",
+                              points_program: "virgin_atlantic",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Alitalia balance",
+                              points_program: "alitalia",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "ANA balance",
+                              points_program: "ana",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "AeroMexico balance",
+                              points_program: "aeromexico",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "El Al balance",
+                              points_program: "el_al",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Hawaiian balance",
+                              points_program: "hawaiian",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Iberia balance",
+                              points_program: "iberia",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Virgin America balance",
+                              points_program: "virgin_america",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Air Berlin balance",
+                              points_program: "air_berlin",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Air China balance",
+                              points_program: "air_china",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Air New Zealand balance",
+                              points_program: "air_new_zealand",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Asiana balance",
+                              points_program: "asiana",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "China Eastern balance",
+                              points_program: "china_eastern",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "China Southern balance",
+                              points_program: "china_southern",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Emirates balance",
+                              points_program: "emirates",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Gol balance",
+                              points_program: "gol",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Hainan balance",
+                              points_program: "hainan",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "JAL balance",
+                              points_program: "jal",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Lufthansa balance",
+                              points_program: "miles_and_more",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Saudia/Saudi Arabian balance",
+                              points_program: "saudia_arabian",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+      
+      creditcard.attributes = {name: "Virgin Australia balance",
+                              points_program: "virgin_australia",
+                              first_purchase_bonus: @balances.spgbalance}
+      @cards.push(creditcard)
+    end
     
     def bonus_handler(rate_arg, card_arg, transfer_bonus_arg, &bonus_calculator)
       #percentage_calculator = { percentage = ((card.first_purchase_bonus + card.spend_bonus + card.spend_requirement) * rate.transferratio) / @result.aacostpts * 100 }

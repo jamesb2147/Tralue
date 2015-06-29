@@ -102,7 +102,7 @@
 
 <p>
   <strong>Country:</strong>
-  <%= @creditcard.country %>
+  <%= @creditcard.country.country_long_form %>
 </p>
 
 <%= link_to 'Edit', edit_creditcard_path(@creditcard), class: 'btn btn-primary' %> |

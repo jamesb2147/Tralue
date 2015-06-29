@@ -1,13 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @setting.user_id %>
-</p>
-
-<p>
   <strong>Country:</strong>
-  <%= @setting.country %>
+  <%= @setting.country.country_long_form %>
 </p>
 
 <p>
@@ -28,6 +23,11 @@
 <p>
   <strong>Show charge cards:</strong>
   <%= @setting.show_charge_cards %>
+</p>
+
+<p>
+  <strong>Maximum number of cards comfortable applying for at once:</strong>
+  <%= @setting.maximum_cards_comfortable_applying_for_at_once %>
 </p>
 
 <p>
@@ -60,5 +60,5 @@
   <%= @setting.fly_on_oneworld %>
 </p>
 
-<%= link_to 'Edit', edit_setting_path(@setting) %> |
-<%= link_to 'Back', settings_path %>
+<%= link_to 'Edit', edit_setting_path(@setting), class: 'btn btn-primary' %> |
+<%= link_to 'Back', root_path, class: 'btn btn-primary' %>

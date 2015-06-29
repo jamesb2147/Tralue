@@ -24,8 +24,10 @@ class CountriesController < ApplicationController
   # POST /countries
   # POST /countries.json
   def create
+    #binding.pry
     @country = Country.new(country_params)
-
+    #binding.pry
+    
     respond_to do |format|
       if @country.save
         format.html { redirect_to @country, notice: 'Country was successfully created.' }
@@ -70,5 +72,6 @@ class CountriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def country_params
       params.require(:country).permit(:country, :country_long_form)
+      #binding.pry
     end
 end

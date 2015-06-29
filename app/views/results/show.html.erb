@@ -39,13 +39,25 @@
             <% array_a["array"].each_with_index do |a, index| %>
                 <% #binding.pry
                 %>
-                <%= if index == 0
-                    '<br><br>'.html_safe + 
-                    (link_to a["card"].name, creditcard_path(a["card"]), class: 'btn btn-info')
+                <%=
+                unless a["card"].id.nil?
+                    if index == 0
+                        '<br><br>'.html_safe + 
+                        (link_to a["card"].name, creditcard_path(a["card"]), class: 'btn btn-info')
+                    else
+                        '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe +
+                        (link_to a["card"].name, creditcard_path(a["card"]), class: 'btn btn-info')
+                    end
                 else
-                    '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe +
-                    (link_to a["card"].name, creditcard_path(a["card"]), class: 'btn btn-info')
-                end %>
+                    if index == 0
+                        '<br><br>'.html_safe +
+                        (link_to a["card"].name, balances_path, class: 'btn btn-info')
+                    else
+                        '<br /><i class="glyphicon glyphicon-plus"></i><br />'.html_safe +
+                        (link_to a["card"].name, balances_path, class: 'btn btn-info')
+                    end
+                end
+                %>
             <% end %>
             </td>
             <td>
