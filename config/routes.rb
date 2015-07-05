@@ -1,4 +1,4 @@
-TralueDev1::Application.routes.draw do
+Tralue::Application.routes.draw do
   resources :histories
 
   resources :countries
